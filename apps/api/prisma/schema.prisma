@@ -1,0 +1,92 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           String   @id @default(uuid())
+  email        String   @unique
+  passwordHash String
+  name         String
+  createdAt    DateTime @default(now())
+
+  organizations OrganizationMember[]
+}
+
+model Organization {
+  id        String   @id @default(uuid())
+  name      String
+  createdAt DateTime @default(now())
+
+  members       OrganizationMember[]
+  partners      Partner[]
+  conversations Conversation[]
+}
+
+// Join table now (single membership in MVP), modeled explicitly so
+// multi-organization membership (ROADMAP TODO) doesn't require a schema
+// rewrite later.
+model OrganizationMember {
+  id             String       @id @default(uuid())
+  userId         String
+  organizationId String
+  role           String       @default("OWNER")
+  createdAt      DateTime     @default(now())
+
+  user         User         @relation(fields: [userId], references: [id], onDelete: Cascade)
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, organizationId])
+}
+
+// A "Partner" is an AI business partner instance scoped to an
+// organization (e.g. "Sales Partner", "Ops Partner") — the chat/memory
+// context is scoped to a Partner, not just to the Organization.
+model Partner {
+  id             String   @id @default(uuid())
+  organizationId String
+  name           String
+  systemPrompt   String   @default("You are a helpful AI business partner. Be concise and practical.")
+  createdAt      DateTime @default(now())
+
+  organization  Organization   @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  conversations Conversation[]
+  memories      Memory[]
+}
+
+model Conversation {
+  id             String   @id @default(uuid())
+  organizationId String
+  partnerId      String
+  title          String   @default("New conversation")
+  createdAt      DateTime @default(now())
+
+  organization Organization @relation(fields: [organizationId], references: [id], onDelete: Cascade)
+  partner      Partner      @relation(fields: [partnerId], references: [id], onDelete: Cascade)
+  messages     Message[]
+}
+
+model Message {
+  id             String   @id @default(uuid())
+  conversationId String
+  role           String   // "user" | "assistant"
+  content        String
+  createdAt      DateTime @default(now())
+
+  conversation Conversation @relation(fields: [conversationId], references: [id], onDelete: Cascade)
+}
+
+// Simple key-fact memory scoped to a Partner, extracted after each chat
+// turn. Deliberately flat (no vector store) for the MVP — see ROADMAP.
+model Memory {
+  id        String   @id @default(uuid())
+  partnerId String
+  content   String
+  createdAt DateTime @default(now())
+
+  partner Partner @relation(fields: [partnerId], references: [id], onDelete: Cascade)
+}

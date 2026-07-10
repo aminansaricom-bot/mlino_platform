@@ -1,0 +1,14 @@
+services:
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: mlino
+      POSTGRES_PASSWORD: mlino
+      POSTGRES_DB: mlino
+    ports:
+      - "5432:5432"
+    volumes:
+      - mlino_pg_data:/var/lib/postgresql/data
+volumes:
+  mlino_pg_data:
