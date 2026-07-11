@@ -1,5 +1,6 @@
-import { Body, Controller, Get, Post, Query, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { CurrentUserId } from '../common/current-user.decorator';
 import { PartnersService } from './partners.service';
 import { CreatePartnerDto } from './dto';
 
@@ -9,12 +10,12 @@ export class PartnersController {
   constructor(private partners: PartnersService) {}
 
   @Post()
-  create(@Req() req: any, @Body() dto: CreatePartnerDto) {
-    return this.partners.create(req.user.userId, dto);
+  create(@CurrentUserId() userId: string, @Body() dto: CreatePartnerDto) {
+    return this.partners.create(userId, dto);
   }
 
   @Get()
-  list(@Req() req: any, @Query('organizationId') organizationId: string) {
-    return this.partners.listForOrganization(req.user.userId, organizationId);
+  list(@CurrentUserId() userId: string, @Query('organizationId') organizationId: string) {
+    return this.partners.listForOrganization(userId, organizationId);
   }
 }

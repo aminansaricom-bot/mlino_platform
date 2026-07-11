@@ -1,5 +1,6 @@
-import { Body, Controller, Get, Param, Post, Query, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post, Query, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { CurrentUserId } from '../common/current-user.decorator';
 import { ChatService } from './chat.service';
 import { SendMessageDto } from './dto';
 
@@ -9,25 +10,25 @@ export class ChatController {
   constructor(private chat: ChatService) {}
 
   @Post('chat')
-  send(@Req() req: any, @Body() dto: SendMessageDto) {
-    return this.chat.sendMessage(req.user.userId, dto);
+  send(@CurrentUserId() userId: string, @Body() dto: SendMessageDto) {
+    return this.chat.sendMessage(userId, dto);
   }
 
   @Get('conversations')
   list(
-    @Req() req: any,
+    @CurrentUserId() userId: string,
     @Query('organizationId') organizationId: string,
     @Query('partnerId') partnerId?: string,
   ) {
-    return this.chat.listConversations(req.user.userId, organizationId, partnerId);
+    return this.chat.listConversations(userId, organizationId, partnerId);
   }
 
   @Get('conversations/:id')
   messages(
-    @Req() req: any,
+    @CurrentUserId() userId: string,
     @Param('id') id: string,
     @Query('organizationId') organizationId: string,
   ) {
-    return this.chat.getConversationMessages(req.user.userId, organizationId, id);
+    return this.chat.getConversationMessages(userId, organizationId, id);
   }
 }

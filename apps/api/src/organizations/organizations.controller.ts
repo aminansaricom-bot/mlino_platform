@@ -1,5 +1,6 @@
-import { Body, Controller, Get, Post, Req, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { CurrentUserId } from '../common/current-user.decorator';
 import { OrganizationsService } from './organizations.service';
 import { CreateOrganizationDto } from './dto';
 
@@ -9,12 +10,12 @@ export class OrganizationsController {
   constructor(private orgs: OrganizationsService) {}
 
   @Post()
-  create(@Req() req: any, @Body() dto: CreateOrganizationDto) {
-    return this.orgs.create(req.user.userId, dto);
+  create(@CurrentUserId() userId: string, @Body() dto: CreateOrganizationDto) {
+    return this.orgs.create(userId, dto);
   }
 
   @Get()
-  list(@Req() req: any) {
-    return this.orgs.listForUser(req.user.userId);
+  list(@CurrentUserId() userId: string) {
+    return this.orgs.listForUser(userId);
   }
 }

@@ -21,8 +21,8 @@ export default function LandingPage() {
       const data = await api<{ accessToken: string }>(path, { method: 'POST', body });
       setToken(data.accessToken);
       router.push('/dashboard');
-    } catch (err: any) {
-      setError(err.message || 'خطایی رخ داد');
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'خطایی رخ داد');
     } finally {
       setLoading(false);
     }

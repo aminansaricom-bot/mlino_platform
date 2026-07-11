@@ -5,17 +5,18 @@ import { AuthModule } from './auth/auth.module';
 import { OrganizationsModule } from './organizations/organizations.module';
 import { PartnersModule } from './partners/partners.module';
 import { ChatModule } from './chat/chat.module';
-import { HealthController } from './health/health.controller';
+import { HealthModule } from './health/health.module';
+import { validateEnv } from './env.validation';
 
 @Module({
   imports: [
-    ConfigModule.forRoot({ isGlobal: true }),
+    ConfigModule.forRoot({ isGlobal: true, validate: validateEnv }),
     PrismaModule,
     AuthModule,
     OrganizationsModule,
     PartnersModule,
     ChatModule,
+    HealthModule,
   ],
-  controllers: [HealthController],
 })
 export class AppModule {}

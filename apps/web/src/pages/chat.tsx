@@ -36,8 +36,8 @@ export default function ChatPage() {
         `/conversations?organizationId=${org}&partnerId=${partner}`,
       );
       setConversations(data);
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'خطایی رخ داد');
     }
   }
 
@@ -48,8 +48,8 @@ export default function ChatPage() {
       );
       setConversationId(id);
       setMessages(data.messages);
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'خطایی رخ داد');
     }
   }
 
@@ -77,8 +77,8 @@ export default function ChatPage() {
         { id: `tmp-a-${Date.now()}`, role: 'assistant', content: data.reply },
       ]);
       loadConversations();
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'خطایی رخ داد');
     } finally {
       setLoading(false);
     }

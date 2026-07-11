@@ -27,8 +27,8 @@ export default function Dashboard() {
       const data = await api<Organization[]>('/organizations');
       setOrgs(data);
       if (data.length && !selectedOrg) setSelectedOrg(data[0].id);
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'خطایی رخ داد');
     }
   }
 
@@ -40,8 +40,8 @@ export default function Dashboard() {
     try {
       const data = await api<Partner[]>(`/partners?organizationId=${orgId}`);
       setPartners(data);
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'خطایی رخ داد');
     }
   }
 
@@ -53,8 +53,8 @@ export default function Dashboard() {
       setOrgName('');
       await loadOrgs();
       setSelectedOrg(org.id);
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'خطایی رخ داد');
     }
   }
 
@@ -68,8 +68,8 @@ export default function Dashboard() {
       });
       setPartnerName('');
       await loadPartners(selectedOrg);
-    } catch (err: any) {
-      setError(err.message);
+    } catch (err) {
+      setError(err instanceof Error ? err.message : 'خطایی رخ داد');
     }
   }
 

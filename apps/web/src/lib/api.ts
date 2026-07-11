@@ -13,9 +13,9 @@ export function clearToken() {
   window.localStorage.removeItem('mlino_token');
 }
 
-export async function api<T = any>(
+export async function api<T = unknown>(
   path: string,
-  options: { method?: string; body?: any } = {},
+  options: { method?: string; body?: unknown } = {},
 ): Promise<T> {
   const token = getToken();
   const res = await fetch(`${API_URL}${path}`, {
@@ -26,9 +26,13 @@ export async function api<T = any>(
     },
     body: options.body ? JSON.stringify(options.body) : undefined,
   });
-  const data = await res.json().catch(() => ({}));
+  const data: unknown = await res.json().catch(() => ({}));
   if (!res.ok) {
-    throw new Error(data?.message || `Request failed (${res.status})`);
+    const message =
+      data && typeof data === 'object' && 'message' in data && typeof (data as { message: unknown }).message === 'string'
+        ? (data as { message: string }).message
+        : undefined;
+    throw new Error(message || `Request failed (${res.status})`);
   }
-  return data;
+  return data as T;
 }
