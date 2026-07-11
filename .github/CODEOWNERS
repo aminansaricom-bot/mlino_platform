@@ -1,0 +1,13 @@
+# Code owners — review routing.
+# Everything defaults to the core engineer until the team grows enough
+# to split ownership by directory (apps/api vs apps/web vs docs/ADR).
+# When that happens, add more specific rules below this line rather than
+# replacing it, so nothing is ever left without an owner.
+
+*                       @aminansaricom-bot
+
+# Architecture decisions and shared config always need core-engineer
+# eyes regardless of who else is added below in the future.
+/docs/ADR/              @aminansaricom-bot
+/.github/               @aminansaricom-bot
+/package.json           @aminansaricom-bot
