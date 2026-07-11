@@ -50,10 +50,25 @@ Multi-org invites, role enforcement, streaming chat, conversation
 search, LLM cost/latency observability, refresh tokens/rate limiting/
 password reset, any automated tests, any production deployment config.
 
+## Engineering management (repo-driven, no chat-delivered instructions)
+
+- `.ai/engineers/{PGSPC,AMINANSARCOM,SADAF}.md` — one file per engineer,
+  each a self-contained entry point (mission, assigned tasks, priority,
+  dependencies, DoD, next task, known blockers).
+- `.ai/sprints/sprint-NN/tasks/<engineer>/TASK-NNN-*.md` — one file per
+  task (objective, context, business value, scope, deliverables,
+  acceptance criteria, dependencies, expected files, DoD, expected PR
+  title).
+- `.ai/sprints/sprint-NN/{reviews,reports,decisions}/` — PR reviews,
+  sprint status reports, and sprint-scoped decisions (distinct from
+  `docs/ADR/`, which is architecture-level, not sprint-level).
+- GitHub Issues/Milestones remain the lightweight, at-a-glance tracker;
+  `.ai/sprints/` is the detailed, self-contained brief each task needs
+  to be worked without further chat context.
+
 ## Team / ownership state
 
-Single founder-owner (`aminansaricom-bot`) plus AI engineering agents
-operating under named briefs (`.ai/briefs/`) starting Sprint 1. No human
-engineers besides the founder as of this writing — briefs are written to
-be fully self-contained so any contributor (human or AI) can pick one up
-without needing this whole conversation's context.
+Single founder-owner (`aminansaricom-bot`). No human engineers besides
+the founder as of this writing — `PGSPC`, `AMINANSARCOM`, `SADAF` are
+named workstream owners (human and/or AI) operating entirely from the
+repo structure above, not from chat instructions.
