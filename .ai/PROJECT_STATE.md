@@ -52,11 +52,17 @@ password reset, any automated tests, any production deployment config.
 
 ## Engineering management (repo-driven, no chat-delivered instructions)
 
+- `.ai/RESUME.md` — the file that lets a brand new session (AI or
+  human) with zero conversation history continue immediately. Read it
+  first if you're starting cold.
 - `.ai/engineers/{PGSPC,AMINANSARCOM,SADAF}.md` — one file per engineer,
-  each a self-contained entry point (mission, assigned tasks, priority,
-  dependencies, DoD, next task, known blockers).
+  each a self-contained entry point (mission, current sprint, assigned
+  tasks, priority, business goal, context, files to modify, acceptance
+  criteria, DoD, remaining work, next immediate action, blockers,
+  expected PR).
+- `.ai/sprints/sprint-NN/README.md` — sprint index.
 - `.ai/sprints/sprint-NN/tasks/<engineer>/TASK-NNN-*.md` — one file per
-  task (objective, context, business value, scope, deliverables,
+  task (objective, business value, context, scope, deliverables,
   acceptance criteria, dependencies, expected files, DoD, expected PR
   title).
 - `.ai/sprints/sprint-NN/{reviews,reports,decisions}/` — PR reviews,

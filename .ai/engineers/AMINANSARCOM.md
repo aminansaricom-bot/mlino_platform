@@ -1,8 +1,8 @@
 # Engineer: AMINANSARCOM
 
-> This file is your single entry point. You do not need chat
-> instructions — everything you need is linked from here or from the
-> task files it points to.
+> Single entry point. No chat instructions required — this file plus
+> its linked task files are everything you need. If you have zero prior
+> context, also read `.ai/RESUME.md` first.
 
 ## Current Mission
 
@@ -11,49 +11,89 @@ role enforcement on top of it.
 
 ## Current Sprint
 
-`sprint-01` — see `.ai/sprints/sprint-01/`.
+`sprint-01` — see [`.ai/sprints/sprint-01/README.md`](../sprints/sprint-01/README.md).
 
 ## Assigned Tasks
 
-1. [`TASK-006-org-invites.md`](../sprints/sprint-01/tasks/AMINANSARCOM/TASK-006-org-invites.md) — Priority: **Medium**
-2. [`TASK-007-roles-permissions.md`](../sprints/sprint-01/tasks/AMINANSARCOM/TASK-007-roles-permissions.md) — Priority: **Medium** (depends on Task 006)
+1. [`TASK-006-org-invites.md`](../sprints/sprint-01/tasks/AMINANSARCOM/TASK-006-org-invites.md) — not started
+2. [`TASK-007-roles-permissions.md`](../sprints/sprint-01/tasks/AMINANSARCOM/TASK-007-roles-permissions.md) — not started, blocked on TASK-006
 
-## Next Task
+## Current Priority
 
-`TASK-006-org-invites.md`. Do not start `TASK-007` until #006 is merged
-— it builds directly on the membership model #006 introduces.
+Medium — both tasks. Strictly sequential: TASK-006 must merge before
+TASK-007 starts.
 
-## Priority
+## Business Goal
 
-Both Medium. Strictly sequential — not parallel with each other.
+MLINO is a platform for organizations, not individuals — a product only
+one person per organization can use isn't the product. This is the
+minimum viable version of "a team," plus the permission boundary that
+makes adding a second person safe.
 
-## Dependencies
+## Context
 
-`TASK-003` (owned by `PGSPC`) pins the current behavior of
-`OrganizationsService.assertMember` with tests. You don't need to wait
-for it to merge before starting, but do not change `assertMember`'s
-signature or behavior — only add new methods alongside it.
+`Organization` and `OrganizationMember` already exist in the schema;
+`OrganizationMember.role` is an unenforced free-text field defaulting to
+`"OWNER"`. Today the only way into an org is being its creator. Full
+picture: `.ai/PROJECT_STATE.md`. Relevant code:
+`apps/api/src/organizations/organizations.service.ts` (read-only for
+you regarding `assertMember` — see Files To Modify),
+`apps/api/src/partners/` (for TASK-007's enforcement target).
+
+## Files To Modify
+
+- `apps/api/src/organizations/**` (new `invites/` sub-module)
+- `apps/api/prisma/schema.prisma` (additive migration: `OrganizationInvite`)
+- `apps/web/src/pages/dashboard.tsx`
+- `docs/ADR/ADR-0011-organization-roles.md` (new, TASK-007 — must merge
+  before TASK-007's enforcement code)
+- `apps/api/src/organizations/require-role.decorator.ts` +
+  `require-role.guard.ts` (new, TASK-007)
+- `apps/api/src/partners/partners.controller.ts` (TASK-007)
+
+**Do not modify:** `organizations.service.ts`'s `assertMember` method
+itself (add new methods alongside it, don't change its signature or
+behavior), anything under `apps/api/src/auth/` or `apps/api/src/chat/`.
+
+## Acceptance Criteria
+
+See each task file's own Acceptance Criteria section — TASK-006 and
+TASK-007 each have a full checklist. Do not consider a task done until
+every box in its own file is checked.
 
 ## Definition of Done
 
-Per-task DoD is in each task file. At the engineer level: both tasks'
-PRs merged, ADR-0011 merged before Task 007's enforcement code, CI
-green, `.ai/PROJECT_STATE.md` updated (new model, new sub-module).
+Per task, plus at the engineer level: both tasks' PRs merged, ADR-0011
+merged before TASK-007's enforcement code, CI green,
+`.ai/PROJECT_STATE.md` updated (new model, new sub-module).
 
-## Known Blockers
+## Remaining Work
 
-None currently.
+Both TASK-006 and TASK-007 — neither has started yet.
 
-## Rules (apply to every task)
+## Next Immediate Action
+
+Start `TASK-006-org-invites.md`. Open a PR titled
+`feat(organizations): add invite flow for multi-member organizations`
+per that task's "Expected Pull Request Title." Do not start TASK-007
+until this merges.
+
+## Current Blockers
+
+None. (Not blocked on `PGSPC`'s TASK-003 — you may start immediately,
+just don't change `assertMember` itself.)
+
+## Expected Pull Request
+
+- TASK-006: `feat(organizations): add invite flow for multi-member organizations`
+- TASK-007: `feat(organizations): enforce role-based permissions on Partner creation`
+
+## Rules
 
 - Follow `CONTRIBUTING.md` for branching/commit/PR format.
 - `npm run lint` and `npm run build` must pass before requesting review.
-- Files you own this sprint: `apps/api/src/organizations/**` (new
-  `invites` sub-module), `apps/api/prisma/schema.prisma` (additive
-  only), `apps/web/src/pages/dashboard.tsx`.
-- Do not touch `apps/api/src/auth/**` or `apps/api/src/chat/**`.
 - Multi-tenancy rule is non-negotiable — every new query goes through an
   org-membership check, same pattern as `assertMember`.
-- Never invent work outside your assigned tasks — if you find something
-  that needs doing, propose a new task file (or flag it in
-  `.ai/sprints/sprint-01/reports/`), don't just do it.
+- Never invent work outside your assigned tasks. If you find something
+  that needs doing, propose a new task file or flag it in
+  `.ai/sprints/sprint-01/reports/` — don't just do it.

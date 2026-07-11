@@ -1,7 +1,9 @@
 # CURRENT SPRINT
 
+> New session with no prior context? Read `.ai/RESUME.md` first.
+
 **Active sprint:** `sprint-01`
-**Full detail:** `.ai/sprints/sprint-01/` — this file is a pointer, not
+**Full detail:** [`.ai/sprints/sprint-01/README.md`](sprints/sprint-01/README.md) — this file is a pointer, not
 a duplicate. If this disagrees with `sprints/sprint-01/`, that
 directory wins.
 
@@ -9,10 +11,11 @@ directory wins.
 
 ```
 .ai/sprints/sprint-01/
-├── tasks/{PGSPC,AMINANSARCOM,SADAF}/   one file per task
-├── reviews/                            one file per reviewed PR
-├── reports/                            sprint-level status reports
-└── decisions/                          sprint-scoped decisions (not architecture — see docs/ADR/ for that)
+├── README.md                            sprint index
+├── tasks/{PGSPC,AMINANSARCOM,SADAF}/    one file per task
+├── reviews/                              one file per reviewed PR
+├── reports/                              sprint-level status reports
+└── decisions/                            sprint-scoped decisions (not architecture — see docs/ADR/ for that)
 ```
 
 ## Engineers
