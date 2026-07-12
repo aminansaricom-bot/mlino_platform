@@ -6,6 +6,15 @@ follows [Keep a Changelog](https://keepachangelog.com/).
 ## [Unreleased]
 
 ### Added
+- `.ai/ENGINEER_WORKFLOW.md` — permanent, single-source-of-truth
+  development workflow document. Mandatory reading for every engineer
+  before starting work. Covers team roles, repository structure,
+  pre-task checklist, branch/commit conventions, submission rules,
+  Definition of Done, review process, merge process, coding standards,
+  forbidden actions, and the continuous development cycle.
+- All three Submission Repositories (`mlino_pgspc`, `mlino_amin-`,
+  `mlino_sadaf-`) initialized: `README.md`, `PROJECT_STATE.md`,
+  `submissions/`, `reports/`, `docs/`.
 - `apps/api` test suite (Jest): unit tests for `AuthService.register`/
   `.login` and `OrganizationsService.assertMember`, 9/9 passing, mocked
   `PrismaService` (no live DB in the suite). First submission through

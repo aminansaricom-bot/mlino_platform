@@ -59,6 +59,14 @@ password reset, any automated tests, any production deployment config.
 
 ## Engineering management (repo-driven, no chat-delivered instructions)
 
+- `.ai/ENGINEER_WORKFLOW.md` — **the single source of truth for the
+  complete development workflow.** Mandatory reading for every engineer
+  before starting any task. Covers team roles, repository structure,
+  pre-task checklist, branch/commit conventions, submission rules,
+  Definition of Done, review process, merge process, coding standards,
+  forbidden actions, and the continuous development cycle. If any other
+  doc conflicts with it on process, this file wins (architecture
+  decisions still belong to `docs/ADR/`).
 - `.ai/SUBMISSION_WORKFLOW.md` — how work moves from an engineer's
   Submission Repository (`mlino_pgspc`, `mlino_amin-`, `mlino_sadaf-`) into
   `mlino_platform`. Only Univestar (Chief Architect/Tech Lead/

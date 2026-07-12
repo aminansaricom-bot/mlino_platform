@@ -2,6 +2,17 @@
 
 _Last updated: 2026-07-12 by Univestar (Chief Architect / Tech Lead / Integrator / Release Manager)._
 
+## Infrastructure: complete
+
+`.ai/ENGINEER_WORKFLOW.md` is now the permanent, single source of truth
+for the complete development workflow (team roles, repo structure,
+pre-task checklist, branch/commit conventions, submission rules,
+Definition of Done, review process, merge process, coding standards,
+forbidden actions, continuous development cycle). Mandatory reading for
+every engineer before starting any task. All three Submission
+Repositories (`mlino_pgspc`, `mlino_amin-`, `mlino_sadaf-`) are
+initialized and ready.
+
 ## Repository health: 🟢 Green
 
 - Lint, typecheck, both app builds, and now `npm test --workspace=apps/api` (9/9) all pass.

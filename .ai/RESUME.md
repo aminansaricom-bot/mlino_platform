@@ -25,12 +25,14 @@ receives engineering instructions through chat. Everything needed to
 work is in this repository:
 
 1. **Are you an engineer with a name** (`PGSPC`, `AMINANSARCOM`,
-   `SADAF`)? Go straight to `.ai/engineers/<YOUR_NAME>.md`. It has your
-   mission, your tasks, your next immediate action, your blockers —
-   everything. Do not wait for chat instructions. Do not invent work
-   outside your assigned tasks — if you find something that needs
-   doing, propose a new task or note it in
-   `.ai/sprints/sprint-01/reports/`, don't just do it.
+   `SADAF`)? Read `.ai/ENGINEER_WORKFLOW.md` first — the complete
+   process (branch naming, commit format, submission rules, Definition
+   of Done, forbidden actions) — then go to
+   `.ai/engineers/<YOUR_NAME>.md`. It has your mission, your tasks, your
+   next immediate action, your blockers — everything. Do not wait for
+   chat instructions. Do not invent work outside your assigned tasks —
+   if you find something that needs doing, propose a new task or note
+   it in `.ai/sprints/sprint-01/reports/`, don't just do it.
 
 2. **Are you acting as Executive CTO** (engineering-org-wide
    coordination, not a single workstream)? Your job:
