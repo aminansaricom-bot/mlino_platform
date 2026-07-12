@@ -3,7 +3,7 @@
 > Ground truth. If this disagrees with the code, the code wins — fix
 > this file in the same PR you noticed the drift.
 >
-> Last verified: 2026-07-11 (commit `c864d5b`, repo `mlino_platform`).
+> Last verified: 2026-07-12 (commit `f1dd523`, repo `mlino_platform`).
 
 ## What exists today
 
@@ -110,7 +110,7 @@ documentation review until Git-based development opens for that
 workstream (see `.ai/engineers/SADAF.md`). Each has a
 Submission Repository: `mlino_pgspc`, `mlino_amin-`, `mlino_sadaf-`
 respectively. `PGSPC` has one merged submission (TASK-003); the other
-two are still empty as of 2026-07-11.
+two are still empty as of 2026-07-12.
 
 Two other repos exist on the same account —
 `mlino_docs-` and `mlino_workspace`, both empty — with no defined role

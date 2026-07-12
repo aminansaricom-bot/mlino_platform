@@ -75,11 +75,15 @@ docs/ADR/                  architecture decisions (durable, not sprint-scoped)
 ## Current state in one paragraph
 
 Sprint Zero (MVP + engineering infra: 11 labels, 3 milestones, 8
-Issues, green CI) is done, merged at `c864d5b`. Sprint 1 is active: 3
-parallel workstreams, `PGSPC` (tests + auth hardening), `AMINANSARCOM`
-(org invites + roles, sequential), `SADAF` (LLM observability → search →
-streaming). No PRs have landed yet — every task is still in "not
-started." GitHub Project board is blocked on a token permission (see
+Issues, green CI) is done, merged at `c864d5b`. Sprint 1 is active:
+`PGSPC`'s TASK-003 (test coverage) is merged (`9d704ec`, Issue #3
+closed) — first submission ever through the Submission Repository
+model. `PGSPC` (TASK-005, backend auth hardening) and `AMINANSARCOM`
+(TASK-006, org invites) are both marked READY to start, verified
+independent (disjoint files, no shared contract). `SADAF`'s code tasks
+(TASK-008/009/010) are paused — reassigned to AI architecture/
+documentation review until Git-based development opens for that
+workstream. GitHub Project board is blocked on a token permission (see
 `STATUS.md`); everything else needed to execute Sprint 1 is unblocked.
 
 ## What a new session should do first
