@@ -10,11 +10,9 @@ review, then follow the normal path from there.
 
 ## Awaiting changes
 
-_Empty — nothing currently blocked on requested changes._
-
 | PR # | Engineer | Task | Requested At | Required Changes |
 |---|---|---|---|---|
-| — | — | — | — | — |
+| — | PGSPC | TASK-005-auth-hardening | 2026-07-12 | - Apply the same atomic-claim pattern used in `refresh()` to `confirmPasswordReset()` (currently read-then-write, same race class already fixed elsewhere in this file) + add a test for it <br> - Add the `.env.example` update — claimed in REPORT.md's file list but not actually present in the submission |
 
 ## Entry format
 

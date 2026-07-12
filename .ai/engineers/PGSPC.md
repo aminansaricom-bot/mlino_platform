@@ -76,7 +76,10 @@ Start `TASK-005-auth-hardening.md`. Submit via `mlino_pgspc` as
 
 ## Current Blockers
 
-None.
+**TASK-005: CHANGES REQUESTED** (2026-07-12) — see `REVIEW_RESULT.md` in
+`mlino_pgspc`. Two required fixes (race condition in
+`confirmPasswordReset`, missing `.env.example`). Per the one-task rule,
+no new task is assigned until this is resolved and re-reviewed.
 
 ## Expected Pull Request
 
