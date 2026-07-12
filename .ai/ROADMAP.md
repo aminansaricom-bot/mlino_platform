@@ -11,4 +11,5 @@ Landing → Auth → Create Organization → Create Partner → Chat → AI repl
 - TODO: conversation search (tracked: Issue #10)
 - TODO: billing/licensing (dental-project-style licensing does NOT apply here)
 - ~~TODO: tests~~ — done, Issue #3, apps/api unit tests for AuthService + OrganizationsService.assertMember
-- TODO: production auth hardening (refresh tokens, rate limiting, password reset) (tracked: Issue #5)
+- ~~TODO: production auth hardening (refresh tokens, rate limiting, password reset)~~ — done, Issue #5 (backend only; frontend wiring for refresh/reset is a new fast-follow TODO below)
+- TODO: frontend wiring for refresh-token silent refresh and password-reset UI (backend contract exists as of Issue #5)

@@ -20,11 +20,12 @@ coverage on the highest-risk paths, then backend auth hardening.
 ## Assigned Tasks
 
 1. [`TASK-003-test-coverage.md`](../sprints/sprint-01/tasks/PGSPC/TASK-003-test-coverage.md) — ✅ **merged** (integrated in commit on `mlino_platform`, Issue #3 closed)
-2. [`TASK-005-auth-hardening.md`](../sprints/sprint-01/tasks/PGSPC/TASK-005-auth-hardening.md) — 🔵 **IN PROGRESS** (branch `feature/task-005-auth-hardening`)
+2. [`TASK-005-auth-hardening.md`](../sprints/sprint-01/tasks/PGSPC/TASK-005-auth-hardening.md) — ✅ **merged** (`e082d9e`, round 2, Issue #5 closed)
 
 ## Current Priority
 
-High — TASK-005. TASK-003 is done.
+None assigned yet — both current tasks are done. Awaiting next Sprint 1
+task selection (Engineering Foundations milestone is complete).
 
 ## Business Goal
 
@@ -66,20 +67,16 @@ script, new dependency).
 
 ## Remaining Work
 
-TASK-005 only. TASK-003 is merged.
+None assigned. TASK-003 and TASK-005 are both merged.
 
 ## Next Immediate Action
 
-Start `TASK-005-auth-hardening.md`. Submit via `mlino_pgspc` as
-`submissions/TASK-005/` (modified files + `REPORT.md`), per
-`.ai/SUBMISSION_WORKFLOW.md`.
+None yet — awaiting next task assignment from Univestar. Do not self-assign.
 
 ## Current Blockers
 
-**TASK-005: CHANGES REQUESTED** (2026-07-12) — see `REVIEW_RESULT.md` in
-`mlino_pgspc`. Two required fixes (race condition in
-`confirmPasswordReset`, missing `.env.example`). Per the one-task rule,
-no new task is assigned until this is resolved and re-reviewed.
+None. TASK-005 round 2 was independently re-reviewed and approved
+(2026-07-12) — see `REVIEW_RESULT.md` in `mlino_pgspc`.
 
 ## Expected Pull Request
 

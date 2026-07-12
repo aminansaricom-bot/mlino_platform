@@ -37,12 +37,13 @@ needed:
 
 ### Sprint 1 execution — coordination complete, IN PROGRESS
 
-- 🟡 **CHANGES REQUESTED — TASK-005** → `PGSPC`, revising. Branch:
-  `feature/task-005-auth-hardening`. Reviewed 2026-07-12: race condition
-  in `confirmPasswordReset()` (same class already fixed in `refresh()`,
-  not applied here) + missing `.env.example`. See `REVIEW_RESULT.md` in
-  `mlino_pgspc` and `.ai/reviews/CHANGES_REQUESTED.md`. Not merged, no
-  new task assigned until resolved.
+- ✅ **MERGED — TASK-005** → `PGSPC`. Commit `e082d9e`. Round 2:
+  independently re-reviewed from scratch per instruction (round 1's
+  review ignored, everything re-verified), all three round-1 findings
+  confirmed fixed (atomic `confirmPasswordReset`, `.env.example`,
+  `ConfigService` consistency), plus a new concurrency test added.
+  28/28 tests passing. Issue #5 closed. `PGSPC` has no new task
+  assigned yet — next Sprint 1 pick pending.
 - 🔵 **IN PROGRESS — TASK-006** → assigned to `AMINANSARCOM`
   (frontend-facing). Branch: `feature/task-006-organization-invites`.
   Org invites — backend invites sub-module +
@@ -53,15 +54,17 @@ needed:
   task includes the backend plumbing the frontend invite UI needs — it
   wasn't split into a pure-frontend sub-task, since doing so would be a
   task redesign, out of scope for this coordination pass.)
-- ⚠️ **Correction (found in 2026-07-12 audit):** TASK-005 and TASK-006
-  are **not** fully disjoint — both modify
-  `apps/api/prisma/schema.prisma` (TASK-005 adds `RefreshToken`/
-  `PasswordResetToken`; TASK-006 adds `OrganizationInvite`). Logically
-  independent (unrelated models), but the same physical file — whichever
-  integrates second needs its `schema.prisma` submission manually
-  reconciled against the first at integration time, not blindly
-  overwritten. No action needed from either engineer — this is an
-  integration-time note for Univestar, not a scope change.
+- ⚠️ **`schema.prisma` conflict is now live, not just predicted:**
+  TASK-005 merged its `RefreshToken`/`PasswordResetToken` models into
+  `apps/api/prisma/schema.prisma` at `e082d9e`. TASK-006's submission
+  (whenever it lands) will almost certainly be based on an older
+  `schema.prisma` that doesn't have those models — per
+  `.ai/ENGINEER_WORKFLOW.md` §13, Univestar (not `AMINANSARCOM`)
+  reconciles this manually at review/integration time, applying
+  TASK-006's `OrganizationInvite` addition on top of the current
+  `main`, not overwriting it. No action needed from `AMINANSARCOM` —
+  submit against whatever `main` looked like when the branch was cut,
+  same as always.
 - ⏸️ **SADAF** — paused on TASK-008/009/010 (code tasks via
   `mlino_sadaf-`). Reassigned to AI architecture and documentation work
   until Git-based development is opened up for this workstream. See

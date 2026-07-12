@@ -3,20 +3,29 @@
 > Ground truth. If this disagrees with the code, the code wins — fix
 > this file in the same PR you noticed the drift.
 >
-> Last verified: 2026-07-12 (commit `f1dd523`, repo `mlino_platform`).
+> Last verified: 2026-07-12 (commit `e082d9e`, repo `mlino_platform`).
 
 ## What exists today
 
 A working, deployed-nowhere-yet MVP: NestJS API (`apps/api`) + Next.js
 web (`apps/web`), npm-workspaces monorepo, Prisma + PostgreSQL.
 
-**Auth**: JWT register/login. No refresh tokens, no rate limiting, no
-password reset yet (Issue #5).
+**Auth**: JWT register/login, now with refresh-token rotation
+(atomic-claim, no double-mint on concurrent calls), rate limiting on
+`/auth/login`/`/auth/register` (`@nestjs/throttler`, configurable via
+`AUTH_THROTTLE_LIMIT`/`AUTH_THROTTLE_TTL_MS`), and a password-reset
+flow (`POST /auth/password-reset/{request,confirm}`, also atomic-claim,
+revokes all outstanding refresh tokens on success). Reset tokens are
+logged server-side, not emailed — no email provider is wired in yet
+(`// TODO` in `auth.service.ts`, same stub pattern as `malino-17tir`'s
+`lib/sms.js`). Backend only — no frontend UI wiring for
+refresh/reset yet (tracked in ROADMAP).
 
 **Data model** (`apps/api/prisma/schema.prisma`): `User`,
 `Organization`, `OrganizationMember` (role field exists but nothing
 enforces it yet — Issue #7), `Partner`, `Conversation`, `Message`,
-`Memory`.
+`Memory`, `RefreshToken`, `PasswordResetToken` (both store only a
+SHA-256 hash of the token, never the raw value).
 
 **API surface**: `POST /auth/{register,login}`, `POST|GET
 /organizations`, `POST|GET /partners`, `POST /chat`, `GET
@@ -54,8 +63,9 @@ covered: `chat/`, `partners/`, anything in `apps/web` — see Issue #3's
 ## What is explicitly not built (see ROADMAP.md for the full list)
 
 Multi-org invites, role enforcement, streaming chat, conversation
-search, LLM cost/latency observability, refresh tokens/rate limiting/
-password reset, any automated tests, any production deployment config.
+search, LLM cost/latency observability, any automated E2E tests, any
+production deployment config. Auth hardening (refresh/rate-limit/reset)
+is done as of TASK-005 — frontend wiring for it is the remaining TODO.
 
 ## Engineering management (repo-driven, no chat-delivered instructions)
 

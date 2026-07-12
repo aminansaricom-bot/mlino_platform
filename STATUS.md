@@ -29,7 +29,7 @@ initialized and ready.
 
 ## Repository health: 🟢 Green
 
-- Lint, typecheck, both app builds, and now `npm test --workspace=apps/api` (9/9) all pass.
+- Lint, typecheck, both app builds, and now `npm test --workspace=apps/api` (28/28) all pass.
 - No circular dependencies.
 - No open PRs on `mlino_platform`, no unreviewed code in `main`.
 - CI now runs lint + test + build on every push/PR (Issue #4, extended
@@ -42,7 +42,7 @@ initialized and ready.
 
 | Engineer | Submission repo | State |
 |---|---|---|
-| `PGSPC` | `mlino_pgspc` | 1 merged (TASK-003). TASK-005 submitted, **CHANGES REQUESTED** 2026-07-12 (race condition + missing `.env.example`), revising. |
+| `PGSPC` | `mlino_pgspc` | 2 merged (TASK-003, TASK-005). No new task assigned pending next Sprint 1 selection. |
 | `AMINANSARCOM` | `mlino_amin-` | Empty — no submissions yet |
 | `SADAF` | `mlino_sadaf-` | 2 documents added (`docs/`) — **process note:** via GitHub web upload ("Add files via upload"), not the `submissions/` convention; filenames carry a stray " (1)" suffix; `PROJECT_STATE.md` not updated to reflect the work. Content itself is substantive (AI architecture proposal). Flagged in 2026-07-12 audit, not yet corrected. |
 
@@ -81,13 +81,11 @@ Projects → Read and write**, then retry.
 
 | # | Title | Issues |
 |---|---|---|
-| 2 | Engineering Foundations | #3 tests, #4 CI (done), #5 auth hardening |
+| 2 | Engineering Foundations | #3 tests (done), #4 CI (done), #5 auth hardening (done) — **milestone complete** |
 | 3 | Collaboration Features | #6 org invites, #7 roles & permissions |
 | 4 | Chat Experience | #8 provider observability, #9 streaming, #10 search |
 
 ## Open Issues
 
-#5, #6, #7, #8, #9, #10 — all scoped, labeled, and milestoned. #5 is
-in revision (CHANGES REQUESTED). #6 is ready to start. #3 and #4 are
-closed (merged/confirmed green respectively) — this section previously
-listed them as open; corrected 2026-07-12.
+#6, #7, #8, #9, #10 — all scoped, labeled, and milestoned. #6 is ready
+to start. #3, #4, #5 are closed (merged/merged/merged respectively).

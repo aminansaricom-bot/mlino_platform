@@ -6,6 +6,18 @@ follows [Keep a Changelog](https://keepachangelog.com/).
 ## [Unreleased]
 
 ### Added
+- Auth hardening: refresh tokens (with atomic-claim rotation), rate
+  limiting on `/auth/login` and `/auth/register` (via `ConfigService`,
+  `@nestjs/throttler`), and a password-reset flow
+  (request/confirm, also atomic-claim, revokes all outstanding refresh
+  tokens on success). `POST /auth/refresh`,
+  `POST /auth/password-reset/request`, `POST /auth/password-reset/confirm`
+  are new. Backend only — frontend wiring is a tracked follow-up.
+  Second submission through the Submission Repository model (`PGSPC`,
+  TASK-005, Issue #5) — round 2, after round 1's CHANGES REQUESTED
+  (race condition in `confirmPasswordReset`, missing `.env.example`)
+  was independently re-reviewed and confirmed fixed. 28/28 tests
+  passing.
 - `.ai/ENGINEER_WORKFLOW.md` — permanent, single-source-of-truth
   development workflow document. Mandatory reading for every engineer
   before starting work. Covers team roles, repository structure,

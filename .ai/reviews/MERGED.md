@@ -8,6 +8,7 @@ from this file.
 | Submission # | Engineer | Task | Merge Date | Commit |
 |---|---|---|---|---|
 | — (patch, grandfathered) | PGSPC | TASK-003-test-coverage | 2026-07-12 | `9d704ec` |
+| — | PGSPC | TASK-005-auth-hardening | 2026-07-12 | `e082d9e` (round 2 — round 1 CHANGES REQUESTED, independently re-reviewed from scratch) |
 
 ## Entry format
 
