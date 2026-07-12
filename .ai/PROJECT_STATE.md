@@ -66,7 +66,11 @@ password reset, any automated tests, any production deployment config.
   Definition of Done, review process, merge process, coding standards,
   forbidden actions, and the continuous development cycle. If any other
   doc conflicts with it on process, this file wins (architecture
-  decisions still belong to `docs/ADR/`).
+  decisions still belong to `docs/ADR/`). §13 covers merge-conflict
+  resolution (Univestar-only, engineers never reconcile cross-submission
+  conflicts).
+- `.ai/templates/REVIEW_RESULT_TEMPLATE.md` — mandatory structure for
+  every `REVIEW_RESULT.md` going forward.
 - `.ai/SUBMISSION_WORKFLOW.md` — how work moves from an engineer's
   Submission Repository (`mlino_pgspc`, `mlino_amin-`, `mlino_sadaf-`) into
   `mlino_platform`. Only Univestar (Chief Architect/Tech Lead/

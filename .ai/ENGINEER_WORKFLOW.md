@@ -235,7 +235,8 @@ Merge into `mlino_platform` happens **only** when:
 - Independent validation (lint/build/test) passed in Univestar's own
   checkout, not just in the engineer's report.
 - The change doesn't conflict with work merged since the submission was
-  generated (Univestar rebases/reconciles if `main` has moved).
+  generated (Univestar rebases/reconciles if `main` has moved — see §13
+  if this involves reconciling against another engineer's work).
 
 On merge: Univestar commits with the engineer's authorship intent
 preserved in the commit body (task, engineer, what changed), pushes
@@ -277,6 +278,9 @@ Engineers must never:
 - Push directly to the Main Repository (`mlino_platform`).
 - Merge their own work.
 - Modify another engineer's Submission Repository.
+- **Resolve a merge conflict involving another engineer's work** — see
+  §13. Only revise your own submission; conflicts across submissions
+  are Univestar's job, not yours.
 - Ignore ADRs.
 - Skip `PROJECT_STATE.md` updates.
 - Skip `REPORT.md` updates.
@@ -307,3 +311,45 @@ Next Task              (assigned in .ai/engineers/<you>.md — you never assign 
 This cycle repeats for every task, for every engineer, for the life of
 the project. No step is skipped, no step is reordered, regardless of
 urgency.
+
+---
+
+## 13. Merge Conflict Resolution
+
+**Only Univestar is allowed to resolve merge conflicts between engineer
+submissions. Engineers must never resolve conflicts involving work from
+another engineer.**
+
+This matters specifically because two engineers can legitimately be
+assigned independent tasks that happen to touch the same physical file
+(e.g. two unrelated Prisma models both added to
+`apps/api/prisma/schema.prisma` — the first confirmed real case of this
+was TASK-005/TASK-006 in Sprint 1, see `.ai/CURRENT_SPRINT.md`).
+Independent tasks are not always independent files.
+
+**Why engineers never touch this themselves:** an engineer only has
+visibility into their own Submission Repository — they cannot see
+another engineer's in-flight, unmerged work, so they are structurally
+unable to resolve a conflict against it correctly even if they wanted
+to. Only Univestar, who reviews and integrates every submission, has
+visibility into all of them at once.
+
+**What this means in practice:**
+
+- If your submission's diff no longer applies cleanly because
+  `mlino_platform@main` has moved since you generated it (whether from
+  another engineer's merged work or otherwise), that is expected and
+  not an error on your part — do not attempt to manually patch around
+  it or guess at the current state of a file you don't own this sprint.
+- Your job is only ever to revise **your own submission** — if
+  requested changes are unrelated to a conflict, just make them. If
+  Univestar's review explains that reconciliation with another
+  engineer's work is needed, that reconciliation happens on Univestar's
+  side during integration, not yours.
+- Univestar performs all manual reconciliation: pulling the current
+  state of `mlino_platform@main`, applying each submission's intended
+  change against it in turn, and verifying (lint/build/test) after
+  reconciliation, not just after each individual submission in
+  isolation.
+- See `.ai/SUBMISSION_WORKFLOW.md` for the full mechanics of how this is
+  handled during integration.

@@ -13,6 +13,20 @@ every engineer before starting any task. All three Submission
 Repositories (`mlino_pgspc`, `mlino_amin-`, `mlino_sadaf-`) are
 initialized and ready.
 
+## Process improvements (2026-07-12 audit follow-up)
+
+- `.ai/templates/REVIEW_RESULT_TEMPLATE.md` — mandatory format for
+  every future review (Review Result, Summary, Strengths, Issues
+  Found, Required Changes, Validation Performed, Merge Decision, Next
+  Actions).
+- New rule (`.ai/ENGINEER_WORKFLOW.md` §13, cross-referenced from §9
+  and §11): **only Univestar resolves merge conflicts between engineer
+  submissions.** Engineers never reconcile against another engineer's
+  work — codifies how the TASK-005/TASK-006 `schema.prisma` overlap
+  (found in the audit) will actually be handled at integration time.
+- `.ai/SUBMISSION_WORKFLOW.md` now documents the conflict-handling
+  mechanics matching that rule.
+
 ## Repository health: 🟢 Green
 
 - Lint, typecheck, both app builds, and now `npm test --workspace=apps/api` (9/9) all pass.

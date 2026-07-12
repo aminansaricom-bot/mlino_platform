@@ -89,6 +89,36 @@ submissions instead of patches:
 Every review ends with one of exactly two verdicts written into
 `REVIEW_RESULT.md`: **APPROVED** or **CHANGES REQUESTED**.
 
+## Merge conflict handling
+
+Two engineers can be assigned genuinely independent tasks that still
+touch the same physical file (e.g. two unrelated Prisma models both
+landing in `apps/api/prisma/schema.prisma` — the confirmed real case:
+TASK-005/TASK-006 in Sprint 1). The full rule lives in
+`.ai/ENGINEER_WORKFLOW.md` §13; this is the mechanical version:
+
+- **Engineers never resolve cross-submission conflicts.** Nobody has
+  visibility into another engineer's unmerged, in-flight work — only
+  Univestar does, by virtue of reviewing every submission. An engineer
+  attempting to reconcile against work they can't see is structurally
+  unable to do it correctly.
+- **Univestar performs all manual reconciliation**, during integration
+  (step 5 above): pull the current `mlino_platform@main`, apply the
+  approved submission's intended change against *that* current state
+  (not blindly overwrite with the submitted file if `main` has moved),
+  and re-run full validation (lint/build/test) against the reconciled
+  result before committing — not just re-validate the submission in
+  isolation.
+- **Engineers only revise their own submission.** If a submission no
+  longer applies cleanly because `main` moved, that's expected and
+  normal, not a mistake on the engineer's part — `REVIEW_RESULT.md`
+  will say so if it's relevant, and the engineer's job stays scoped to
+  their own `submissions/TASK-XXX/` folder, nothing else.
+- If two submissions touching the same file are both pending review at
+  once, integrate and fully validate one before starting the review of
+  the other — never reconcile two unmerged, unvalidated changes against
+  each other simultaneously.
+
 ## What Univestar never does in a Submission Repository
 
 Never write or modify anything there except `REVIEW_RESULT.md`. Never
