@@ -4,6 +4,13 @@
 **Engineer:** SADAF
 **Sprint:** sprint-01
 **Ship after:** TASK-008 and TASK-010 are merged
+**Suggested branch:** `feature/task-009-streaming-chat`
+**ADR references:** No dedicated ADR required for the SSE approach
+itself (explicitly scoped in this task's own body: "do not introduce
+WebSockets"). If streaming ends up requiring a change to
+`LlmGatewayService`'s public interface (not just an additive method),
+flag it — an interface change is closer to architecture than
+implementation and may warrant a short ADR before merging.
 
 ## Objective
 

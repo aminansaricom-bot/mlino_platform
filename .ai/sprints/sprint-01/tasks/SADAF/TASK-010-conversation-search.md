@@ -3,6 +3,10 @@
 **GitHub Issue:** #10
 **Engineer:** SADAF
 **Sprint:** sprint-01
+**Suggested branch:** `feature/task-010-conversation-search`
+**ADR references:** No dedicated ADR required — a `contains` filter on
+existing data, not new search infrastructure (this task's own body
+already rules out full-text/semantic search infra as out of scope).
 
 ## Objective
 

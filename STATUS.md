@@ -28,9 +28,9 @@ initialized and ready.
 
 | Engineer | Submission repo | State |
 |---|---|---|
-| `PGSPC` | `mlino_pgspc` | 1 merged (TASK-003), on TASK-005 next |
+| `PGSPC` | `mlino_pgspc` | 1 merged (TASK-003). TASK-005 submitted, **CHANGES REQUESTED** 2026-07-12 (race condition + missing `.env.example`), revising. |
 | `AMINANSARCOM` | `mlino_amin-` | Empty — no submissions yet |
-| `SADAF` | `mlino_sadaf-` | Empty — no submissions yet |
+| `SADAF` | `mlino_sadaf-` | 2 documents added (`docs/`) — **process note:** via GitHub web upload ("Add files via upload"), not the `submissions/` convention; filenames carry a stray " (1)" suffix; `PROJECT_STATE.md` not updated to reflect the work. Content itself is substantive (AI architecture proposal). Flagged in 2026-07-12 audit, not yet corrected. |
 
 Mechanism: `.ai/SUBMISSION_WORKFLOW.md`. Review board:
 `.ai/reviews/REVIEW_QUEUE.md`.
@@ -73,6 +73,7 @@ Projects → Read and write**, then retry.
 
 ## Open Issues
 
-#3, #5, #6, #7, #8, #9, #10 — all scoped, labeled, and milestoned, ready
-to be picked up by any contributor. #4 is implemented in this session;
-closing it once CI is confirmed green on GitHub.
+#5, #6, #7, #8, #9, #10 — all scoped, labeled, and milestoned. #5 is
+in revision (CHANGES REQUESTED). #6 is ready to start. #3 and #4 are
+closed (merged/confirmed green respectively) — this section previously
+listed them as open; corrected 2026-07-12.

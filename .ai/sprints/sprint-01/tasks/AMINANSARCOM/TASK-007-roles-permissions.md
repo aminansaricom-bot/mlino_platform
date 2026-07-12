@@ -4,6 +4,11 @@
 **Engineer:** AMINANSARCOM
 **Sprint:** sprint-01
 **Depends on:** TASK-006 (must be merged first)
+**Suggested branch:** `feature/task-007-organization-roles`
+**ADR references:** This task's own body already requires writing
+`docs/ADR/ADR-0011-organization-roles.md` before enforcement code —
+that ADR *is* the required reference for this task, not a pre-existing
+one. Do not start the enforcement code until it's merged.
 
 ## Objective
 

@@ -3,6 +3,12 @@
 **GitHub Issue:** #8
 **Engineer:** SADAF
 **Sprint:** sprint-01
+**Suggested branch:** `feature/task-008-llm-observability`
+**ADR references:** No dedicated ADR required — plain logging inside
+the existing `LlmGatewayService` (already behind an interface per
+`docs/ADR/ADR-0001-stack.md`), not a new architectural direction. If
+this later grows into real cost-tracking infrastructure (a dashboard,
+a separate metrics store), that's a new ADR, not this task.
 
 ## Objective
 

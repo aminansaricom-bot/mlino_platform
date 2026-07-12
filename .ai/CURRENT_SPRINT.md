@@ -13,7 +13,7 @@ directory wins.
 .ai/sprints/sprint-01/
 ├── README.md                            sprint index
 ├── tasks/{PGSPC,AMINANSARCOM,SADAF}/    one file per task
-├── reviews/                              one file per reviewed PR
+├── reviews/                              one file per reviewed submission
 ├── reports/                              sprint-level status reports
 └── decisions/                            sprint-scoped decisions (not architecture — see docs/ADR/ for that)
 ```
@@ -37,12 +37,12 @@ needed:
 
 ### Sprint 1 execution — coordination complete, IN PROGRESS
 
-- 🔵 **IN PROGRESS — TASK-005** → assigned to `PGSPC` (backend). Branch:
-  `feature/task-005-auth-hardening`. Auth hardening — refresh tokens,
-  rate limiting, password reset. Files: `apps/api/src/auth/**`. No
-  blocking dependency. Spec verified complete: acceptance criteria, DoD,
-  dependencies, ADR reference, API contracts, DB migration shape, and
-  branch name are all now explicit in the task file.
+- 🟡 **CHANGES REQUESTED — TASK-005** → `PGSPC`, revising. Branch:
+  `feature/task-005-auth-hardening`. Reviewed 2026-07-12: race condition
+  in `confirmPasswordReset()` (same class already fixed in `refresh()`,
+  not applied here) + missing `.env.example`. See `REVIEW_RESULT.md` in
+  `mlino_pgspc` and `.ai/reviews/CHANGES_REQUESTED.md`. Not merged, no
+  new task assigned until resolved.
 - 🔵 **IN PROGRESS — TASK-006** → assigned to `AMINANSARCOM`
   (frontend-facing). Branch: `feature/task-006-organization-invites`.
   Org invites — backend invites sub-module +
@@ -53,8 +53,15 @@ needed:
   task includes the backend plumbing the frontend invite UI needs — it
   wasn't split into a pure-frontend sub-task, since doing so would be a
   task redesign, out of scope for this coordination pass.)
-- Verified independent: TASK-005 and TASK-006 touch disjoint files, no
-  shared contract, no ordering requirement between them.
+- ⚠️ **Correction (found in 2026-07-12 audit):** TASK-005 and TASK-006
+  are **not** fully disjoint — both modify
+  `apps/api/prisma/schema.prisma` (TASK-005 adds `RefreshToken`/
+  `PasswordResetToken`; TASK-006 adds `OrganizationInvite`). Logically
+  independent (unrelated models), but the same physical file — whichever
+  integrates second needs its `schema.prisma` submission manually
+  reconciled against the first at integration time, not blindly
+  overwritten. No action needed from either engineer — this is an
+  integration-time note for Univestar, not a scope change.
 - ⏸️ **SADAF** — paused on TASK-008/009/010 (code tasks via
   `mlino_sadaf-`). Reassigned to AI architecture and documentation work
   until Git-based development is opened up for this workstream. See
@@ -69,12 +76,12 @@ sprint opens, or a cross-cutting blocker appears).
 
 ## Review board
 
-Every PR's status: [`.ai/reviews/REVIEW_QUEUE.md`](reviews/REVIEW_QUEUE.md)
+Every submission's status: [`.ai/reviews/REVIEW_QUEUE.md`](reviews/REVIEW_QUEUE.md)
 → [`APPROVED.md`](reviews/APPROVED.md) → [`MERGED.md`](reviews/MERGED.md),
 or → [`CHANGES_REQUESTED.md`](reviews/CHANGES_REQUESTED.md) and back to
-the queue. **One task, one PR, per engineer at a time** — no engineer
-starts a new task while a PR of theirs is in the queue or in changes
-requested.
+the queue. **One task, one submission, per engineer at a time** — no
+engineer starts a new task while a submission of theirs is in the queue
+or in changes requested.
 
 ## Blocked (cross-cutting, not tied to one engineer)
 
