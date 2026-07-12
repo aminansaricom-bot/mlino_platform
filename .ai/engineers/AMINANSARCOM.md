@@ -19,7 +19,7 @@ role enforcement on top of it.
 
 ## Assigned Tasks
 
-1. [`TASK-006-org-invites.md`](../sprints/sprint-01/tasks/AMINANSARCOM/TASK-006-org-invites.md) — not started
+1. [`TASK-006-org-invites.md`](../sprints/sprint-01/tasks/AMINANSARCOM/TASK-006-org-invites.md) — 🟢 **READY, start now**
 2. [`TASK-007-roles-permissions.md`](../sprints/sprint-01/tasks/AMINANSARCOM/TASK-007-roles-permissions.md) — not started, blocked on TASK-006
 
 ## Current Priority

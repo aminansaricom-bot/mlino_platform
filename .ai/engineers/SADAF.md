@@ -11,8 +11,13 @@
 
 ## Current Mission
 
-Make the chat surface production-grade: observable, searchable, and
-responsive.
+⏸️ **Paused (as of 2026-07-12):** code tasks (TASK-008/009/010, Chat
+Experience — observable, searchable, responsive chat) are on hold until
+Git-based development is opened up for this workstream. Current focus
+instead: **AI architecture and documentation** — reviewing and improving
+`docs/ai/`-equivalent content, `docs/ADR/` entries touching the AI
+assistant/LLM gateway, and keeping this workstream's task files accurate
+and ready to resume the moment code submission opens back up.
 
 ## Current Sprint
 
@@ -20,19 +25,32 @@ responsive.
 
 ## Submission Repository
 
-`mlino_sadaf-` — submit patches here, not as a direct PR on `mlino_platform`. See `.ai/SUBMISSION_WORKFLOW.md` for the exact convention: one `submissions/TASK-XXX/` folder per task, containing only the modified files (preserving their real project path) plus `REPORT.md`. No `.patch`/`.diff`/zip files.
+`mlino_sadaf-` — initialized and ready (`README.md`, `PROJECT_STATE.md`,
+`submissions/`, `reports/`, `docs/`), but not yet in active use for this
+workstream — see Current Mission above. See `.ai/SUBMISSION_WORKFLOW.md`
+for the exact submission convention when code work resumes: one
+`submissions/TASK-XXX/` folder per task, containing only the modified
+files (preserving their real project path) plus `REPORT.md`. No
+`.patch`/`.diff`/zip files.
 
 ## Assigned Tasks
 
-1. [`TASK-008-llm-observability.md`](../sprints/sprint-01/tasks/SADAF/TASK-008-llm-observability.md) — not started
-2. [`TASK-010-conversation-search.md`](../sprints/sprint-01/tasks/SADAF/TASK-010-conversation-search.md) — not started
-3. [`TASK-009-streaming-chat.md`](../sprints/sprint-01/tasks/SADAF/TASK-009-streaming-chat.md) — not started, ship last by design
+**Paused (code, resume when Git-based development opens for this
+workstream):**
+1. [`TASK-008-llm-observability.md`](../sprints/sprint-01/tasks/SADAF/TASK-008-llm-observability.md) — not started, on hold
+2. [`TASK-010-conversation-search.md`](../sprints/sprint-01/tasks/SADAF/TASK-010-conversation-search.md) — not started, on hold
+3. [`TASK-009-streaming-chat.md`](../sprints/sprint-01/tasks/SADAF/TASK-009-streaming-chat.md) — not started, on hold, ship last by design once resumed
+
+**Active now:** AI architecture and documentation review (no task file
+yet — first deliverable is proposing one, scoped to real gaps found in
+`docs/ai/` and AI-related ADRs, not speculative work).
 
 ## Current Priority
 
-TASK-008 and TASK-010 are Low complexity, ship first for quick wins.
-TASK-009 is Medium priority, the largest task in this workstream — do
-not start it until the other two are merged.
+Documentation/architecture review is the only active work right now.
+Once resumed, sequencing stays: TASK-008 and TASK-010 (Low complexity,
+quick wins) before TASK-009 (Medium, the largest task in this
+workstream).
 
 ## Business Goal
 
@@ -76,17 +94,26 @@ changes (it will, for streaming) or a new dependency is added.
 
 ## Remaining Work
 
-All three tasks — none started yet.
+All three code tasks (TASK-008/009/010) — none started, all paused. AI
+architecture and documentation review — not yet scoped into a task file.
 
 ## Next Immediate Action
 
-Start `TASK-008-llm-observability.md` — smallest, ship it first to build
-momentum before the bigger streaming task. Open a PR titled
+Code tasks are paused — do not start `TASK-008` yet. Current next
+action: review `docs/ai/` and AI-related ADRs for real (not
+speculative) gaps, propose findings. When code development reopens for
+this workstream, resume here: start `TASK-008-llm-observability.md` —
+smallest, ship it first to build momentum before the bigger streaming
+task. Open a PR titled
 `feat(chat): log provider, latency, and token usage for every LLM call`.
 
 ## Current Blockers
 
-None.
+Not blocked, but **paused by decision, not by a technical blocker**:
+code tasks on hold until Git-based development is opened up for this
+workstream (per Engineering Lead direction, 2026-07-12). Submission
+Repository (`mlino_sadaf-`) is fully initialized and ready whenever
+that changes.
 
 ## Expected Pull Request
 

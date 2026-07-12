@@ -104,7 +104,10 @@ password reset, any automated tests, any production deployment config.
 Single founder-owner (`aminansaricom-bot`). No human engineers besides
 the founder as of this writing — `PGSPC`, `AMINANSARCOM`, `SADAF` are
 named workstream owners (human and/or AI) operating entirely from the
-repo structure above, not from chat instructions. Each has a
+repo structure above, not from chat instructions. `SADAF`'s code tasks
+are paused as of 2026-07-12 — reassigned to AI architecture/
+documentation review until Git-based development opens for that
+workstream (see `.ai/engineers/SADAF.md`). Each has a
 Submission Repository: `mlino_pgspc`, `mlino_amin-`, `mlino_sadaf-`
 respectively. `PGSPC` has one merged submission (TASK-003); the other
 two are still empty as of 2026-07-11.
