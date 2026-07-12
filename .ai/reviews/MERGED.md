@@ -9,7 +9,7 @@ from this file.
 
 | PR # | Engineer | Task | Merge Date | Commit |
 |---|---|---|---|---|
-| — (patch, grandfathered) | PGSPC | TASK-003-test-coverage | 2026-07-12 | see next commit on `main` |
+| — (patch, grandfathered) | PGSPC | TASK-003-test-coverage | 2026-07-12 | `9d704ec` |
 
 ## Entry format
 
