@@ -20,3 +20,24 @@ export class LoginDto {
   @IsString()
   password: string;
 }
+
+export class RefreshDto {
+  @IsString()
+  @MinLength(1)
+  refreshToken: string;
+}
+
+export class RequestPasswordResetDto {
+  @IsEmail()
+  email: string;
+}
+
+export class ConfirmPasswordResetDto {
+  @IsString()
+  @MinLength(1)
+  token: string;
+
+  @IsString()
+  @MinLength(8)
+  newPassword: string;
+}

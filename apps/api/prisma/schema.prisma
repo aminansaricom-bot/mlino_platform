@@ -14,7 +14,43 @@ model User {
   name         String
   createdAt    DateTime @default(now())
 
-  organizations OrganizationMember[]
+  organizations  OrganizationMember[]
+  refreshTokens  RefreshToken[]
+  resetTokens    PasswordResetToken[]
+}
+
+// Opaque random tokens, only the hash is stored (same principle as a
+// password: if the DB leaks, stored rows alone can't be replayed).
+// Rotation: refresh() always revokes the presented token and issues a
+// brand new pair, so a stolen-then-reused refresh token is detected
+// (its revokedAt will already be set) rather than silently accepted.
+model RefreshToken {
+  id         String    @id @default(uuid())
+  userId     String
+  tokenHash  String    @unique
+  expiresAt  DateTime
+  revokedAt  DateTime?
+  createdAt  DateTime  @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
+}
+
+// Password reset flow. No email provider configured for MVP — the raw
+// token is logged server-side (see auth.service.ts requestPasswordReset,
+// same pattern as malino-17tir's lib/sms.js stub) rather than emailed.
+model PasswordResetToken {
+  id         String    @id @default(uuid())
+  userId     String
+  tokenHash  String    @unique
+  expiresAt  DateTime
+  usedAt     DateTime?
+  createdAt  DateTime  @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@index([userId])
 }
 
 model Organization {
