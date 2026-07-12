@@ -18,9 +18,9 @@ responsive.
 
 `sprint-01` — see [`.ai/sprints/sprint-01/README.md`](../sprints/sprint-01/README.md).
 
-## Inbox Repository
+## Submission Repository
 
-`mlino_sadaf-` — submit patches here, not as a direct PR on `mlino_platform`. See `.ai/PATCH_WORKFLOW.md` for the exact convention (one `.patch` file per task under `patches/`, plus a `PROJECT_STATE.md` describing the submission).
+`mlino_sadaf-` — submit patches here, not as a direct PR on `mlino_platform`. See `.ai/SUBMISSION_WORKFLOW.md` for the exact convention: one `submissions/TASK-XXX/` folder per task, containing only the modified files (preserving their real project path) plus `REPORT.md`. No `.patch`/`.diff`/zip files.
 
 ## Assigned Tasks
 

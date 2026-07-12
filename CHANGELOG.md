@@ -6,13 +6,17 @@ follows [Keep a Changelog](https://keepachangelog.com/).
 ## [Unreleased]
 
 ### Added
-- Inbox-repository patch workflow: engineers (`PGSPC`, `AMINANSARCOM`,
-  `SADAF`) now submit work as patches to their own Inbox repo
-  (`mlino_pgspc`, `mlino_amin-`, `mlino_sadaf-`) instead of opening PRs
-  directly on `mlino_platform`. Only Univestar pushes to
-  `mlino_platform`. Full mechanism: `.ai/PATCH_WORKFLOW.md`.
+- Submission Repository workflow (final): engineers (`PGSPC`,
+  `AMINANSARCOM`, `SADAF`) submit work as `submissions/TASK-XXX/`
+  folders (modified files at their real project path, plus
+  `REPORT.md`) to their own Submission Repository (`mlino_pgspc`,
+  `mlino_amin-`, `mlino_sadaf-`) instead of opening PRs directly on
+  `mlino_platform`. No `.patch`/`.diff`/zip files. Only Univestar
+  pushes to `mlino_platform`. Full mechanism:
+  `.ai/SUBMISSION_WORKFLOW.md`. (Supersedes an earlier `.patch`-file
+  convention that was never used in practice before being replaced.)
 - `.ai/reviews/{REVIEW_QUEUE,APPROVED,CHANGES_REQUESTED,MERGED}.md` —
-  live review board tracking every patch through its lifecycle.
+  live review board tracking every submission through its lifecycle.
 - `.ai/RESUME.md` — lets a new session with zero conversation history
   resume engineering work immediately.
 - `.ai/sprints/sprint-01/` — Sprint 1 plan, 3 parallel workstreams,

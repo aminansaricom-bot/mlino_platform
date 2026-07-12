@@ -1,6 +1,6 @@
 # APPROVED.md
 
-> Submission unit is now a **patch** in an engineer's Inbox repo, not a direct PR on `mlino_platform`. See `.ai/PATCH_WORKFLOW.md` for the full mechanism. Column names below say "PR #" for historical continuity — read it as "Patch/PR #".
+> Submission unit is a **task folder** (`submissions/TASK-XXX/`) in an engineer's Submission Repository, not a direct PR on `mlino_platform` and not a `.patch` file. See `.ai/SUBMISSION_WORKFLOW.md` for the full mechanism. Column names below say "PR #" for historical continuity — read it as "Submission (TASK-XXX) #", and "Branch" as "Submission Repository path".
 
 Every Pull Request approved for merge, in the window between approval
 and the merge actually happening. Entries move to `MERGED.md` once

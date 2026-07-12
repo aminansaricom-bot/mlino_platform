@@ -13,9 +13,10 @@ PostgreSQL, npm-workspaces monorepo. Full detail: `.ai/PROJECT_STATE.md`.
 ## Repositories
 
 - `mlino_platform` — the main repo (this one). Only Univestar pushes here.
-- `mlino_pgspc`, `mlino_amin-`, `mlino_sadaf-` — one Inbox repo per
-  engineer, where they submit patches for review. Full mechanism:
-  `.ai/PATCH_WORKFLOW.md`.
+- `mlino_pgspc`, `mlino_amin-`, `mlino_sadaf-` — one Submission Repository per
+  engineer, where they submit completed tasks as file-level
+  submissions for review. Full mechanism:
+  `.ai/SUBMISSION_WORKFLOW.md`.
 
 ## The operating model (read this even if you skip everything else)
 
@@ -57,7 +58,7 @@ work is in this repository:
 ├── ROADMAP.md             what's explicitly not built yet, and why
 ├── RESUME.md              this file
 ├── engineers/             one file per engineer — their entry point
-├── PATCH_WORKFLOW.md       how patches move from an Inbox repo into mlino_platform
+├── SUBMISSION_WORKFLOW.md       how submissions move from a Submission Repository into mlino_platform
 ├── reviews/                CTO's live review board (queue/approved/changes-requested/merged)
 └── sprints/sprint-01/
     ├── README.md          sprint index

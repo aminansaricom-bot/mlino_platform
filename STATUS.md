@@ -9,15 +9,15 @@ _Last updated: 2026-07-11 by Univestar (Chief Architect / Tech Lead / Integrator
 - No open PRs on `mlino_platform`, no unreviewed code in `main`.
 - CI now runs lint + build on every push/PR (Issue #4).
 
-## Inbox repositories (patch submission)
+## Submission repositories (work submission)
 
-| Engineer | Inbox repo | State |
+| Engineer | Submission repo | State |
 |---|---|---|
 | `PGSPC` | `mlino_pgspc` | Empty — no patches submitted |
 | `AMINANSARCOM` | `mlino_amin-` | Empty — no patches submitted |
 | `SADAF` | `mlino_sadaf-` | Empty — no patches submitted |
 
-Mechanism: `.ai/PATCH_WORKFLOW.md`. Review board:
+Mechanism: `.ai/SUBMISSION_WORKFLOW.md`. Review board:
 `.ai/reviews/REVIEW_QUEUE.md`.
 
 Two other repos exist on the account (`mlino_docs-`, `mlino_workspace`),

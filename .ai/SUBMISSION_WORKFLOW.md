@@ -1,0 +1,92 @@
+# SUBMISSION_WORKFLOW.md
+
+How work moves from an engineer to `mlino_platform`. This is the
+**final** architecture for the Submission Repository model — it supersedes the earlier
+`.patch`-file convention (`PATCH_WORKFLOW.md`, retired). No `.patch` or
+diff files are used anywhere in this workflow anymore.
+
+## Repositories
+
+| Repo | Owner | Purpose |
+|---|---|---|
+| `mlino_platform` | Univestar only | Main repo — the actual product. |
+| `mlino_pgspc` | `PGSPC` | Submission Repository for `PGSPC`. |
+| `mlino_amin-` | `AMINANSARCOM` | Submission Repository for `AMINANSARCOM`. |
+| `mlino_sadaf-` | `SADAF` | Submission Repository for `SADAF`. |
+
+(Note: real repo names carry a trailing `-` — `mlino_amin-` /
+`mlino_sadaf-`, not `mlino_amin` / `mlino_sadaf`.)
+
+## Submission Repository structure
+
+Each engineer's Submission Repository root:
+
+```
+mlino_<engineer>/
+├── PROJECT_STATE.md          engineer's own view of what they've submitted / where they are
+├── NEXT_TASK.md               which task they're working on next, and why
+├── submissions/
+│   └── TASK-XXX/
+│       ├── REPORT.md          what changed, why, how it was verified locally
+│       └── <modified files>   only the files that changed, at their real
+│                               project path, e.g.:
+│                               apps/api/src/chat/llm-gateway.service.ts
+└── REVIEW_RESULT.md           written by Univestar only — do not edit
+                              (states APPROVED or CHANGES REQUESTED,
+                              with full explanation either way)
+```
+
+- One `submissions/TASK-XXX/` folder per task — still one task per
+  submission, same rule as before, just no `.patch` file: the engineer
+  commits the actual changed files, preserving their real path relative
+  to the `mlino_platform` repo root (e.g. a change to
+  `apps/api/src/chat/llm-gateway.service.ts` lives at
+  `submissions/TASK-008/apps/api/src/chat/llm-gateway.service.ts` in the
+  Submission Repository).
+- Only modified files go in — not a full repo copy. If `TASK-008` only
+  touches one file, `submissions/TASK-008/` contains exactly that one
+  file (at its real path) plus `REPORT.md`.
+- `REPORT.md` per task states: what changed, why, and how it was
+  verified locally (lint/build/test output).
+- Top-level `PROJECT_STATE.md` and `NEXT_TASK.md` are the engineer's own
+  running status — not to be confused with `mlino_platform`'s
+  `.ai/PROJECT_STATE.md`, which is Univestar's.
+
+## Review pipeline (Univestar)
+
+Tracked live in `.ai/reviews/REVIEW_QUEUE.md` → `APPROVED.md` /
+`CHANGES_REQUESTED.md` → `MERGED.md`, same board as before, now fed by
+submissions instead of patches:
+
+1. Pull `mlino_platform` + all three Submission Repositories.
+2. Detect new `submissions/TASK-XXX/` folders not yet reviewed.
+3. Compare the submitted files against the corresponding paths in
+   `mlino_platform` (diff each file at its real project path).
+4. Architectural review: architecture fit, coding standards, security,
+   ADR consistency, roadmap alignment, task acceptance criteria — same
+   checklist as always.
+5. **Approved** → copy the submitted files into a local
+   `mlino_platform` checkout at their real paths, run
+   `npm run lint && npm run build` (and `npm test` once `TASK-003` lands
+   a test runner), commit, push to `mlino_platform`. Update
+   `.ai/CURRENT_SPRINT.md`, `STATUS.md`, `CHANGELOG.md`,
+   `.ai/PROJECT_STATE.md`. Write `REVIEW_RESULT.md` in the Submission
+   Repository stating **APPROVED**, the integration commit sha, and any
+   review notes. Assign the engineer's next task in
+   `.ai/engineers/<name>.md`.
+6. **Changes requested** → write `REVIEW_RESULT.md` in the Submission
+   Repository stating **CHANGES REQUESTED** and explaining exactly what
+   must change, one point per required modification. Move the entry to
+   `.ai/reviews/CHANGES_REQUESTED.md`. Engineer does not get a new task
+   until resolved — they update their `submissions/TASK-XXX/` folder in
+   place and it re-enters the queue.
+
+Every review ends with one of exactly two verdicts written into
+`REVIEW_RESULT.md`: **APPROVED** or **CHANGES REQUESTED**.
+
+## What Univestar never does in a Submission Repository
+
+Never write or modify anything there except `REVIEW_RESULT.md`. Never
+push code there. Never delete or edit an engineer's
+`submissions/TASK-XXX/` folder, even after integrating it — it's their
+historical record.
