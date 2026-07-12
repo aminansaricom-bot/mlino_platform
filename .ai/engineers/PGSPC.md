@@ -20,7 +20,7 @@ coverage on the highest-risk paths, then backend auth hardening.
 ## Assigned Tasks
 
 1. [`TASK-003-test-coverage.md`](../sprints/sprint-01/tasks/PGSPC/TASK-003-test-coverage.md) — ✅ **merged** (integrated in commit on `mlino_platform`, Issue #3 closed)
-2. [`TASK-005-auth-hardening.md`](../sprints/sprint-01/tasks/PGSPC/TASK-005-auth-hardening.md) — 🟢 **READY, start now**
+2. [`TASK-005-auth-hardening.md`](../sprints/sprint-01/tasks/PGSPC/TASK-005-auth-hardening.md) — 🔵 **IN PROGRESS** (branch `feature/task-005-auth-hardening`)
 
 ## Current Priority
 

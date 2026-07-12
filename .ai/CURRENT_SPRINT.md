@@ -35,19 +35,24 @@ needed:
   First submission through the Submission Repository model. Issue #3
   closed.
 
-### Sprint 1 execution — first tasks selected
+### Sprint 1 execution — coordination complete, IN PROGRESS
 
-- 🟢 **READY — TASK-005** (`PGSPC`, backend): auth hardening — refresh
-  tokens, rate limiting, password reset. Files:
-  `apps/api/src/auth/**`. No blocking dependency.
-- 🟢 **READY — TASK-006** (`AMINANSARCOM`, frontend-facing): org
-  invites — backend invites sub-module +
+- 🔵 **IN PROGRESS — TASK-005** → assigned to `PGSPC` (backend). Branch:
+  `feature/task-005-auth-hardening`. Auth hardening — refresh tokens,
+  rate limiting, password reset. Files: `apps/api/src/auth/**`. No
+  blocking dependency. Spec verified complete: acceptance criteria, DoD,
+  dependencies, ADR reference, API contracts, DB migration shape, and
+  branch name are all now explicit in the task file.
+- 🔵 **IN PROGRESS — TASK-006** → assigned to `AMINANSARCOM`
+  (frontend-facing). Branch: `feature/task-006-organization-invites`.
+  Org invites — backend invites sub-module +
   `apps/web/src/pages/dashboard.tsx` UI. Files:
   `apps/api/src/organizations/invites/**`,
-  `apps/web/src/pages/dashboard.tsx`. No blocking dependency. (Note:
-  this task includes the backend plumbing the frontend invite UI needs
-  — it wasn't split into a pure-frontend sub-task, since doing so would
-  be a task redesign, out of scope for this sprint-start pass.)
+  `apps/web/src/pages/dashboard.tsx`. No blocking dependency. Spec
+  verified complete, same six points as TASK-005 above. (Note: this
+  task includes the backend plumbing the frontend invite UI needs — it
+  wasn't split into a pure-frontend sub-task, since doing so would be a
+  task redesign, out of scope for this coordination pass.)
 - Verified independent: TASK-005 and TASK-006 touch disjoint files, no
   shared contract, no ordering requirement between them.
 - ⏸️ **SADAF** — paused on TASK-008/009/010 (code tasks via

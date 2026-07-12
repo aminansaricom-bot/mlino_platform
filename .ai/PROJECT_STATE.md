@@ -87,7 +87,12 @@ password reset, any automated tests, any production deployment config.
   queue → approved → merged, or queue → changes requested → back to
   queue. An engineer with a PR anywhere in this pipeline (queue or
   changes-requested) does not start a new task until it clears.
-- `.ai/sprints/sprint-NN/README.md` — sprint index.
+- `.ai/sprints/sprint-NN/README.md` — sprint index. Task files
+  (`tasks/<engineer>/TASK-NNN-*.md`) now also carry a suggested branch
+  name and explicit ADR/API-contract/DB-migration sections, verified
+  complete before an engineer starts (see TASK-005/006 as the
+  reference standard). Branch convention:
+  `feature/task-<nnn>-<slug>` (e.g. `feature/task-005-auth-hardening`).
 - `.ai/sprints/sprint-NN/tasks/<engineer>/TASK-NNN-*.md` — one file per
   task (objective, business value, context, scope, deliverables,
   acceptance criteria, dependencies, expected files, DoD, expected PR

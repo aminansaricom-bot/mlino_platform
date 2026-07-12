@@ -3,6 +3,13 @@
 **GitHub Issue:** #6
 **Engineer:** AMINANSARCOM
 **Sprint:** sprint-01
+**Suggested branch:** `feature/task-006-organization-invites`
+**ADR references:** No dedicated ADR required — invites are additive
+data (`OrganizationInvite`) built on the tenant model already decided
+in `docs/ADR/ADR-0001-stack.md` (Prisma + PostgreSQL) and the
+`assertMember` scoping pattern already in code. If the invite/email
+strategy later needs a real provider decision, that's a separate ADR,
+not part of this task.
 
 ## Objective
 
@@ -31,6 +38,29 @@ minimum viable version of "a team."
   if no provider is configured, matching the pattern used in
   `TASK-005`).
 
+## API Contracts
+
+- `POST /organizations/:id/invites` — auth required (existing member).
+  Request: `{ email: string }`. Response: `201` with
+  `{ id, organizationId, email, expiresAt }`. `403` if the caller isn't
+  a member (via `assertMember`).
+- `POST /organizations/invites/:inviteId/accept` — auth required
+  (the invited user, logged in). Response: `200` with the new
+  `OrganizationMember` row. `410 Gone` if expired, `409 Conflict` if
+  already consumed, `404` if the invite doesn't exist or doesn't match
+  the authenticated user's email.
+- `GET /organizations/invites/pending` — auth required. Response: list
+  of pending invites for the authenticated user's email, across all
+  organizations (this is what the dashboard's pending-invites section
+  calls).
+
+## Database Migration
+
+Additive Prisma model, `OrganizationInvite`: `id`, `organizationId`
+(FK → `Organization`), `email`, `token` (or reuse `id` as the token —
+implementer's call), `expiresAt`, `consumedAt` (nullable — null means
+still pending), `createdAt`. No changes to existing models.
+
 ## Deliverables
 
 - New Prisma model: `OrganizationInvite` (additive migration).
@@ -55,9 +85,9 @@ minimum viable version of "a team."
 
 ## Dependencies
 
-Builds on `OrganizationsService.assertMember`, which `PGSPC` is writing
-characterization tests against in `TASK-003`. You do not need to wait
-for that PR to merge — just don't change `assertMember` itself.
+Builds on `OrganizationsService.assertMember`, which `PGSPC` pinned with
+characterization tests in `TASK-003` (merged, `mlino_platform@9d704ec`).
+Just don't change `assertMember` itself.
 
 ## Expected files
 
@@ -74,10 +104,12 @@ apps/web/src/pages/dashboard.tsx                             (modified)
 
 - All acceptance criteria checked.
 - `npm run lint` and `npm run build` pass.
-- PR merged to `main`.
+- Submitted via `mlino_amin-` as `submissions/TASK-006/` (per
+  `.ai/SUBMISSION_WORKFLOW.md`) and integrated into `mlino_platform` by
+  Univestar (`REVIEW_RESULT.md`: APPROVED).
 - `.ai/PROJECT_STATE.md` updated (new model, new sub-module, ROADMAP
   TODO for invites marked done).
 
-## Expected Pull Request title
+## Expected Submission Title
 
 `feat(organizations): add invite flow for multi-member organizations`
