@@ -7,11 +7,9 @@ from this file.
 
 ## Merged
 
-_Empty — nothing merged yet this sprint._
-
 | PR # | Engineer | Task | Merge Date | Commit |
 |---|---|---|---|---|
-| — | — | — | — | — |
+| — (patch, grandfathered) | PGSPC | TASK-003-test-coverage | 2026-07-12 | see next commit on `main` |
 
 ## Entry format
 

@@ -6,6 +6,11 @@ follows [Keep a Changelog](https://keepachangelog.com/).
 ## [Unreleased]
 
 ### Added
+- `apps/api` test suite (Jest): unit tests for `AuthService.register`/
+  `.login` and `OrganizationsService.assertMember`, 9/9 passing, mocked
+  `PrismaService` (no live DB in the suite). First submission through
+  the Submission Repository model (`PGSPC`, TASK-003, Issue #3).
+  `npm test --workspace=apps/api` now exists.
 - Submission Repository workflow (final): engineers (`PGSPC`,
   `AMINANSARCOM`, `SADAF`) submit work as `submissions/TASK-XXX/`
   folders (modified files at their real project path, plus

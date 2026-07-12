@@ -10,5 +10,5 @@ Landing → Auth → Create Organization → Create Partner → Chat → AI repl
 - TODO: streaming chat responses (tracked: Issue #9)
 - TODO: conversation search (tracked: Issue #10)
 - TODO: billing/licensing (dental-project-style licensing does NOT apply here)
-- TODO: tests (tracked: Issue #3)
+- ~~TODO: tests~~ — done, Issue #3, apps/api unit tests for AuthService + OrganizationsService.assertMember
 - TODO: production auth hardening (refresh tokens, rate limiting, password reset) (tracked: Issue #5)

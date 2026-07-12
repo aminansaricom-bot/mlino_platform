@@ -1,21 +1,25 @@
 # STATUS
 
-_Last updated: 2026-07-11 by Univestar (Chief Architect / Tech Lead / Integrator / Release Manager)._
+_Last updated: 2026-07-12 by Univestar (Chief Architect / Tech Lead / Integrator / Release Manager)._
 
 ## Repository health: 🟢 Green
 
-- Lint, typecheck, and both app builds pass.
+- Lint, typecheck, both app builds, and now `npm test --workspace=apps/api` (9/9) all pass.
 - No circular dependencies.
 - No open PRs on `mlino_platform`, no unreviewed code in `main`.
-- CI now runs lint + build on every push/PR (Issue #4).
+- CI now runs lint + test + build on every push/PR (Issue #4, extended
+  for the new `apps/api` test suite).
+- Pre-existing (not new) moderate/high npm audit findings in
+  `express`/`body-parser`/`qs` (transitive via `@nestjs/platform-express`)
+  — tracked as Issue #11, not introduced by any recent change.
 
 ## Submission repositories (work submission)
 
 | Engineer | Submission repo | State |
 |---|---|---|
-| `PGSPC` | `mlino_pgspc` | Empty — no patches submitted |
-| `AMINANSARCOM` | `mlino_amin-` | Empty — no patches submitted |
-| `SADAF` | `mlino_sadaf-` | Empty — no patches submitted |
+| `PGSPC` | `mlino_pgspc` | 1 merged (TASK-003), on TASK-005 next |
+| `AMINANSARCOM` | `mlino_amin-` | Empty — no submissions yet |
+| `SADAF` | `mlino_sadaf-` | Empty — no submissions yet |
 
 Mechanism: `.ai/SUBMISSION_WORKFLOW.md`. Review board:
 `.ai/reviews/REVIEW_QUEUE.md`.

@@ -26,6 +26,14 @@ needed:
 - `.ai/engineers/AMINANSARCOM.md` — Collaboration Features (invites, roles)
 - `.ai/engineers/SADAF.md` — Chat Experience (observability, search, streaming)
 
+## Progress
+
+- ✅ **TASK-003** (`PGSPC`) merged — `apps/api` unit tests for
+  `AuthService` and `OrganizationsService.assertMember`, 9/9 passing.
+  First submission through the Submission Repository model. Issue #3
+  closed. `PGSPC` now on **TASK-005** (auth hardening).
+- Everything else: not started.
+
 ## Status
 
 See `.ai/sprints/sprint-01/reports/sprint-01-kickoff-report.md` for the

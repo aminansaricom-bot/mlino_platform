@@ -27,9 +27,16 @@ enforces it yet — Issue #7), `Partner`, `Conversation`, `Message`,
 Memory is a naive per-partner log of user messages, no extraction, no
 retrieval ranking.
 
-**No test suite yet** (Issue #3). **No frontend beyond**: login/
+**No frontend beyond**: login/
 register, dashboard (create org/partner), single-conversation chat page.
 No search, no streaming.
+
+**Tests** (`apps/api`): Jest, added in TASK-003. `AuthService.register`/
+`.login` and `OrganizationsService.assertMember` have unit tests
+against a mocked `PrismaService` (no real DB in the suite — fast,
+CI-friendly). Run with `npm test --workspace=apps/api`. Still not
+covered: `chat/`, `partners/`, anything in `apps/web` — see Issue #3's
+"Out of scope" for what was deliberately deferred.
 
 ## Engineering infrastructure (as of Sprint Zero)
 
@@ -91,7 +98,8 @@ the founder as of this writing — `PGSPC`, `AMINANSARCOM`, `SADAF` are
 named workstream owners (human and/or AI) operating entirely from the
 repo structure above, not from chat instructions. Each has a
 Submission Repository: `mlino_pgspc`, `mlino_amin-`, `mlino_sadaf-`
-respectively (all empty as of 2026-07-11 — no submissions yet).
+respectively. `PGSPC` has one merged submission (TASK-003); the other
+two are still empty as of 2026-07-11.
 
 Two other repos exist on the same account —
 `mlino_docs-` and `mlino_workspace`, both empty — with no defined role

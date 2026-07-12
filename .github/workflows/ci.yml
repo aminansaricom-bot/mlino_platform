@@ -26,6 +26,9 @@ jobs:
       - name: Generate Prisma client
         run: npx prisma generate --schema=apps/api/prisma/schema.prisma
 
+      - name: Test API
+        run: npm test --workspace=apps/api
+
       - name: Build API
         run: npm run build --workspace=apps/api
 

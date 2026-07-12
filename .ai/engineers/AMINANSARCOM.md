@@ -84,8 +84,9 @@ until this merges.
 
 ## Current Blockers
 
-None. (Not blocked on `PGSPC`'s TASK-003 — you may start immediately,
-just don't change `assertMember` itself.)
+None. `PGSPC`'s TASK-003 is now merged — `assertMember`'s current
+behavior is pinned by real tests. Still don't change its signature or
+behavior.
 
 ## Expected Pull Request
 

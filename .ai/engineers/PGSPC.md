@@ -19,13 +19,12 @@ coverage on the highest-risk paths, then backend auth hardening.
 
 ## Assigned Tasks
 
-1. [`TASK-003-test-coverage.md`](../sprints/sprint-01/tasks/PGSPC/TASK-003-test-coverage.md) — not started
-2. [`TASK-005-auth-hardening.md`](../sprints/sprint-01/tasks/PGSPC/TASK-005-auth-hardening.md) — not started
+1. [`TASK-003-test-coverage.md`](../sprints/sprint-01/tasks/PGSPC/TASK-003-test-coverage.md) — ✅ **merged** (integrated in commit on `mlino_platform`, Issue #3 closed)
+2. [`TASK-005-auth-hardening.md`](../sprints/sprint-01/tasks/PGSPC/TASK-005-auth-hardening.md) — not started, **next**
 
 ## Current Priority
 
-High — both tasks. Sequence: TASK-003 first (fast, de-risks everything,
-and unblocks `AMINANSARCOM`'s integration point), then TASK-005.
+High — TASK-005. TASK-003 is done.
 
 ## Business Goal
 
@@ -67,13 +66,13 @@ script, new dependency).
 
 ## Remaining Work
 
-Both TASK-003 and TASK-005 — neither has started yet.
+TASK-005 only. TASK-003 is merged.
 
 ## Next Immediate Action
 
-Start `TASK-003-test-coverage.md`. Open a PR titled
-`test(api): add unit tests for AuthService and OrganizationsService.assertMember`
-per that task's "Expected Pull Request Title."
+Start `TASK-005-auth-hardening.md`. Submit via `mlino_pgspc` as
+`submissions/TASK-005/` (modified files + `REPORT.md`), per
+`.ai/SUBMISSION_WORKFLOW.md`.
 
 ## Current Blockers
 
@@ -88,8 +87,6 @@ None.
 
 - Follow `CONTRIBUTING.md` for branching/commit/PR format.
 - `npm run lint` and `npm run build` must pass before requesting review.
-- You are a dependency **for** `AMINANSARCOM` (see integration note in
-  `.ai/sprints/sprint-01/README.md`) — land TASK-003 promptly.
 - One task, one PR at a time — do not start your next task while a PR is in `.ai/reviews/REVIEW_QUEUE.md` or `.ai/reviews/CHANGES_REQUESTED.md`.
 - Never invent work outside your assigned tasks. If you find something
   that needs doing, propose a new task file or flag it in
