@@ -98,6 +98,7 @@ None.
   Context above.
 - Multi-tenancy rule is non-negotiable — search must be scoped to the
   organization, never global.
+- One task, one PR at a time — do not start your next task while a PR is in `.ai/reviews/REVIEW_QUEUE.md` or `.ai/reviews/CHANGES_REQUESTED.md`.
 - Never invent work outside your assigned tasks. If you find something
   that needs doing, propose a new task file or flag it in
   `.ai/sprints/sprint-01/reports/` — don't just do it.

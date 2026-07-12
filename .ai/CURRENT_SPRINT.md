@@ -33,6 +33,15 @@ full kickoff report (summary, risks, blockers, next actions). Updated
 here only when the sprint-level status changes (sprint closes, new
 sprint opens, or a cross-cutting blocker appears).
 
+## Review board
+
+Every PR's status: [`.ai/reviews/REVIEW_QUEUE.md`](reviews/REVIEW_QUEUE.md)
+→ [`APPROVED.md`](reviews/APPROVED.md) → [`MERGED.md`](reviews/MERGED.md),
+or → [`CHANGES_REQUESTED.md`](reviews/CHANGES_REQUESTED.md) and back to
+the queue. **One task, one PR, per engineer at a time** — no engineer
+starts a new task while a PR of theirs is in the queue or in changes
+requested.
+
 ## Blocked (cross-cutting, not tied to one engineer)
 
 - GitHub Project board — `createProjectV2` returns `FORBIDDEN`. Needs

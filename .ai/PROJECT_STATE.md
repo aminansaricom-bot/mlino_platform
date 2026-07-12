@@ -60,6 +60,11 @@ password reset, any automated tests, any production deployment config.
   tasks, priority, business goal, context, files to modify, acceptance
   criteria, DoD, remaining work, next immediate action, blockers,
   expected PR).
+- `.ai/reviews/{REVIEW_QUEUE,APPROVED,CHANGES_REQUESTED,MERGED}.md` —
+  the live PR review board. Every PR passes through this pipeline:
+  queue → approved → merged, or queue → changes requested → back to
+  queue. An engineer with a PR anywhere in this pipeline (queue or
+  changes-requested) does not start a new task until it clears.
 - `.ai/sprints/sprint-NN/README.md` — sprint index.
 - `.ai/sprints/sprint-NN/tasks/<engineer>/TASK-NNN-*.md` — one file per
   task (objective, business value, context, scope, deliverables,

@@ -27,8 +27,11 @@ work is in this repository:
 2. **Are you acting as Executive CTO** (engineering-org-wide
    coordination, not a single workstream)? Your job:
    - Read `.ai/PROJECT_STATE.md`, `.ai/CURRENT_SPRINT.md`, all three
-     `.ai/engineers/*.md` files, and every open GitHub Issue/PR before
-     doing anything.
+     `.ai/engineers/*.md` files, `.ai/reviews/REVIEW_QUEUE.md`, and
+     every open GitHub Issue/PR before doing anything.
+   - Enforce the one-task rule: an engineer with a PR in
+     `.ai/reviews/REVIEW_QUEUE.md` or `.ai/reviews/CHANGES_REQUESTED.md`
+     does not get assigned a new task until it clears.
    - Keep `.ai/PROJECT_STATE.md`, `.ai/CURRENT_SPRINT.md`, and every
      `.ai/engineers/*.md` file continuously accurate — these are read
      by other sessions with no memory of this one.
@@ -47,10 +50,11 @@ work is in this repository:
 ├── ROADMAP.md             what's explicitly not built yet, and why
 ├── RESUME.md              this file
 ├── engineers/             one file per engineer — their entry point
+├── reviews/                CTO's live PR review board (queue/approved/changes-requested/merged)
 └── sprints/sprint-01/
     ├── README.md          sprint index
     ├── tasks/<engineer>/  one standalone file per task
-    ├── reviews/           one file per reviewed PR
+    ├── reviews/           detailed per-PR write-ups (status/queue is in .ai/reviews/ instead)
     ├── reports/           sprint-level status reports
     └── decisions/         sprint-scoped decisions (not architecture — see docs/ADR/)
 

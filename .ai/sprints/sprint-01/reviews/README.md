@@ -1,6 +1,12 @@
-# Reviews — sprint-01
+# Reviews — sprint-01 (detailed, per-PR write-ups)
 
 One file per reviewed Pull Request: `PR-<number>-review.md`.
+
+> This directory holds the **detailed** review write-up. PR
+> **status/queue tracking** (waiting / approved / changes requested /
+> merged) lives in `.ai/reviews/` at the repo root, not here — that's
+> the CTO's cross-sprint review board. This directory is the durable,
+> per-PR technical record; `.ai/reviews/` is the live board.
 
 ## Convention
 

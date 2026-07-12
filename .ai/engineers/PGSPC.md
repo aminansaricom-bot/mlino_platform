@@ -86,6 +86,7 @@ None.
 - `npm run lint` and `npm run build` must pass before requesting review.
 - You are a dependency **for** `AMINANSARCOM` (see integration note in
   `.ai/sprints/sprint-01/README.md`) — land TASK-003 promptly.
+- One task, one PR at a time — do not start your next task while a PR is in `.ai/reviews/REVIEW_QUEUE.md` or `.ai/reviews/CHANGES_REQUESTED.md`.
 - Never invent work outside your assigned tasks. If you find something
   that needs doing, propose a new task file or flag it in
   `.ai/sprints/sprint-01/reports/` — don't just do it.
