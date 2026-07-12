@@ -13,6 +13,10 @@ coverage on the highest-risk paths, then backend auth hardening.
 
 `sprint-01` — see [`.ai/sprints/sprint-01/README.md`](../sprints/sprint-01/README.md).
 
+## Inbox Repository
+
+`mlino_pgspc` — submit patches here, not as a direct PR on `mlino_platform`. See `.ai/PATCH_WORKFLOW.md` for the exact convention (one `.patch` file per task under `patches/`, plus a `PROJECT_STATE.md` describing the submission).
+
 ## Assigned Tasks
 
 1. [`TASK-003-test-coverage.md`](../sprints/sprint-01/tasks/PGSPC/TASK-003-test-coverage.md) — not started

@@ -52,6 +52,13 @@ password reset, any automated tests, any production deployment config.
 
 ## Engineering management (repo-driven, no chat-delivered instructions)
 
+- `.ai/PATCH_WORKFLOW.md` — how work moves from an engineer's Inbox
+  repo (`mlino_pgspc`, `mlino_amin-`, `mlino_sadaf-`) into
+  `mlino_platform`. Only Univestar (Chief Architect/Tech Lead/
+  Integrator/Release Manager) pushes to `mlino_platform`; engineers
+  submit patches to their own Inbox repo instead of opening PRs here
+  directly.
+
 - `.ai/RESUME.md` — the file that lets a brand new session (AI or
   human) with zero conversation history continue immediately. Read it
   first if you're starting cold.
@@ -82,4 +89,11 @@ password reset, any automated tests, any production deployment config.
 Single founder-owner (`aminansaricom-bot`). No human engineers besides
 the founder as of this writing — `PGSPC`, `AMINANSARCOM`, `SADAF` are
 named workstream owners (human and/or AI) operating entirely from the
-repo structure above, not from chat instructions.
+repo structure above, not from chat instructions. Each has an Inbox
+repo for patch submission: `mlino_pgspc`, `mlino_amin-`, `mlino_sadaf-`
+respectively (all empty as of 2026-07-11 — no patches submitted yet).
+
+Two other repos exist on the same account —
+`mlino_docs-` and `mlino_workspace`, both empty — with no defined role
+in this project yet. Not in use, not touched, noted here only so a
+future session doesn't mistake them for something already integrated.

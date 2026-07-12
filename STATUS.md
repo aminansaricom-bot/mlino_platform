@@ -1,13 +1,27 @@
 # STATUS
 
-_Last updated: 2026-07-11 by Univestar (core engineering review)._
+_Last updated: 2026-07-11 by Univestar (Chief Architect / Tech Lead / Integrator / Release Manager)._
 
 ## Repository health: 🟢 Green
 
 - Lint, typecheck, and both app builds pass.
 - No circular dependencies.
-- No open PRs, no unreviewed code in `main`.
+- No open PRs on `mlino_platform`, no unreviewed code in `main`.
 - CI now runs lint + build on every push/PR (Issue #4).
+
+## Inbox repositories (patch submission)
+
+| Engineer | Inbox repo | State |
+|---|---|---|
+| `PGSPC` | `mlino_pgspc` | Empty — no patches submitted |
+| `AMINANSARCOM` | `mlino_amin-` | Empty — no patches submitted |
+| `SADAF` | `mlino_sadaf-` | Empty — no patches submitted |
+
+Mechanism: `.ai/PATCH_WORKFLOW.md`. Review board:
+`.ai/reviews/REVIEW_QUEUE.md`.
+
+Two other repos exist on the account (`mlino_docs-`, `mlino_workspace`),
+both empty, no defined role — not part of this workflow.
 
 ## Engineering infrastructure
 

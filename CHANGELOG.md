@@ -6,6 +6,17 @@ follows [Keep a Changelog](https://keepachangelog.com/).
 ## [Unreleased]
 
 ### Added
+- Inbox-repository patch workflow: engineers (`PGSPC`, `AMINANSARCOM`,
+  `SADAF`) now submit work as patches to their own Inbox repo
+  (`mlino_pgspc`, `mlino_amin-`, `mlino_sadaf-`) instead of opening PRs
+  directly on `mlino_platform`. Only Univestar pushes to
+  `mlino_platform`. Full mechanism: `.ai/PATCH_WORKFLOW.md`.
+- `.ai/reviews/{REVIEW_QUEUE,APPROVED,CHANGES_REQUESTED,MERGED}.md` —
+  live review board tracking every patch through its lifecycle.
+- `.ai/RESUME.md` — lets a new session with zero conversation history
+  resume engineering work immediately.
+- `.ai/sprints/sprint-01/` — Sprint 1 plan, 3 parallel workstreams,
+  7 standalone task files, sprint-scoped decisions log.
 - MVP scaffold: NestJS API (`apps/api`) + Next.js web (`apps/web`) in an
   npm-workspaces monorepo.
 - Auth (register/login, JWT), Organizations, Partners, Chat (LLM gateway

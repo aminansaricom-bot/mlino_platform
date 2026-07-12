@@ -1,5 +1,7 @@
 # CHANGES_REQUESTED.md
 
+> Submission unit is now a **patch** in an engineer's Inbox repo, not a direct PR on `mlino_platform`. See `.ai/PATCH_WORKFLOW.md` for the full mechanism. Column names below say "PR #" for historical continuity — read it as "Patch/PR #".
+
 Every Pull Request that needs modification before it can be approved.
 The engineer does not start a new task while their PR is here — see the
 engineering rule in `REVIEW_QUEUE.md`. Entries move back to

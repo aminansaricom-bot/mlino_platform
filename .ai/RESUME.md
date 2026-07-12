@@ -10,6 +10,13 @@ An AI Business Partner platform. This repo (`mlino_platform`) is the
 MVP: NestJS API (`apps/api`) + Next.js web (`apps/web`), Prisma +
 PostgreSQL, npm-workspaces monorepo. Full detail: `.ai/PROJECT_STATE.md`.
 
+## Repositories
+
+- `mlino_platform` — the main repo (this one). Only Univestar pushes here.
+- `mlino_pgspc`, `mlino_amin-`, `mlino_sadaf-` — one Inbox repo per
+  engineer, where they submit patches for review. Full mechanism:
+  `.ai/PATCH_WORKFLOW.md`.
+
 ## The operating model (read this even if you skip everything else)
 
 **GitHub is the single source of truth.** Nobody — human or AI —
@@ -50,7 +57,8 @@ work is in this repository:
 ├── ROADMAP.md             what's explicitly not built yet, and why
 ├── RESUME.md              this file
 ├── engineers/             one file per engineer — their entry point
-├── reviews/                CTO's live PR review board (queue/approved/changes-requested/merged)
+├── PATCH_WORKFLOW.md       how patches move from an Inbox repo into mlino_platform
+├── reviews/                CTO's live review board (queue/approved/changes-requested/merged)
 └── sprints/sprint-01/
     ├── README.md          sprint index
     ├── tasks/<engineer>/  one standalone file per task

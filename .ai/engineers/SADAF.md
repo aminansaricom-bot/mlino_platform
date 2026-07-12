@@ -18,6 +18,10 @@ responsive.
 
 `sprint-01` — see [`.ai/sprints/sprint-01/README.md`](../sprints/sprint-01/README.md).
 
+## Inbox Repository
+
+`mlino_sadaf-` — submit patches here, not as a direct PR on `mlino_platform`. See `.ai/PATCH_WORKFLOW.md` for the exact convention (one `.patch` file per task under `patches/`, plus a `PROJECT_STATE.md` describing the submission).
+
 ## Assigned Tasks
 
 1. [`TASK-008-llm-observability.md`](../sprints/sprint-01/tasks/SADAF/TASK-008-llm-observability.md) — not started
