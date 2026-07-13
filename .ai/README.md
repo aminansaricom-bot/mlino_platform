@@ -5,6 +5,11 @@ Read before working on this repo:
 2. ROADMAP.md — what's in/out of scope (MVP only, everything else is a TODO line).
 3. CURRENT_SPRINT.md — pointer to the active sprint's detail.
 4. docs/ADR/ — why the stack was chosen.
+5. `docs/product/` — the permanent, multi-year product architecture
+   (Vision 2.0: MLINO as an AI-first Business Operating System, not
+   accounting software). Read this for *what the product is*; read
+   `PROJECT_STATE.md`/`CURRENT_SPRINT.md` for *what's built right now*
+   — they intentionally move at different speeds.
 
 ## Engineering management is repo-driven, not chat-driven
 
