@@ -29,6 +29,13 @@ legitimately form/table-shaped. Forcing these into chat isn't
 AI-first, it's AI-shaped cosplay — see Principle 9 for the actual
 pattern these should follow instead.
 
+**Examples:**
+- ✅ A manager types "how's my inventory looking?" and gets an answer
+  with an offer to reorder low-stock items — no need to open an
+  inventory page to find that out.
+- ❌ A new "Low Stock Alerts" capability ships only as a dashboard
+  widget, with no way to ask about it, or act on it, conversationally.
+
 ## 2. Conversation before dashboard
 
 **Rule:** the default landing experience is the conversation (the
@@ -42,6 +49,12 @@ dashboard layout for it.
 **Where it doesn't apply:** nowhere, structurally — this is about
 *default landing*, not about whether dashboards exist. Dashboards
 still exist (Domain 9), just never as the front door.
+
+**Examples:**
+- ✅ Logging in shows: *"Good morning. Yesterday's revenue was up 12%,
+  but Dr. Sara has had 3 cancellations this week."* — then an input box.
+- ❌ Logging in shows a grid of charts and KPI cards, with a chat icon
+  tucked in the corner as an extra feature.
 
 ## 3. Recommendation before reporting
 
@@ -60,6 +73,12 @@ responsible recommendation yet (Domain 2 still maturing — see
 `SPRINT_PLAN.md`'s Wave 1 scoping), the honest answer is the data plus
 an explicit "not enough history to recommend yet," not a fabricated
 recommendation. Principle 6 (Explainable AI) governs this boundary.
+
+**Examples:**
+- ✅ *"Margin dropped 8% this month, mainly from a 15% rise in material
+  costs — want me to compare suppliers?"*
+- ❌ *"Revenue: $12,400. Costs: $9,800. Margin: 21%."* — accurate, and
+  still a report, not a recommendation.
 
 ## 4. Automation before manual work
 
@@ -80,6 +99,13 @@ initiation even after automation infrastructure exists — this isn't a
 maturity gap to close later, it's permanent, and it's exactly what
 Principle 10 is for.
 
+**Examples:**
+- ✅ A cancellation is detected and the AI automatically offers the
+  freed slot to the next waitlisted patient, pending one-tap manager
+  confirmation.
+- ❌ The AI shows "you have a cancellation" and leaves the manager to
+  manually check the waitlist and call each patient.
+
 ## 5. Memory-driven interactions
 
 **Rule:** the AI should get better at helping a specific organization
@@ -98,6 +124,13 @@ discussion) — "remember everything forever" is not the same principle
 as "remember what's useful," and the two must not be conflated when
 memory retention policy is actually designed.
 
+**Examples:**
+- ✅ Two weeks after a manager mentions wanting to cut late
+  cancellations, the AI opens with *"since you mentioned reducing late
+  cancellations — here's what's changed."*
+- ❌ Every conversation starts from zero, and the manager re-explains
+  the same recurring problem each time they bring it up.
+
 ## 6. Explainable AI
 
 **Rule:** every score, recommendation, or automated action the AI
@@ -115,6 +148,12 @@ carve-out. Un-explainable automation (Principle 4) or un-explainable
 recommendations (Principle 3) are the two places this product is most
 likely to lose trust in one bad interaction, so this principle
 overrides the other two when they'd conflict.
+
+**Examples:**
+- ✅ *"Flagging Dr. Sara's schedule as at-risk: 3 cancellations in 2
+  weeks, versus her usual 0–1."* — a specific, checkable reason.
+- ❌ *"Risk score: 82/100."* — with no accessible reason behind the
+  number.
 
 ## 7. Business-first, accounting-second
 
@@ -135,6 +174,12 @@ itself is never negotiable *once Domain 7 is being built* — this
 principle governs sequencing and framing, not accuracy. "Business-first"
 does not mean "accounting can be sloppy."
 
+**Examples:**
+- ✅ The roadmap prioritizes "AI explains why profit dropped" over
+  "add multi-currency journal entry support."
+- ❌ Sprint planning starts from "what does the chart of accounts
+  need" instead of "what does the manager need to know."
+
 ## 8. Multi-industry architecture
 
 **Rule:** nothing in Domains 1, 2, 8, 9, or 10 should hard-code
@@ -154,6 +199,12 @@ promise that a second vertical ships soon — `.ai/VISION.md`'s existing
 already established this; this principle is how that stays true in
 code, not a new commitment to build a second vertical.
 
+**Examples:**
+- ✅ Domain 1's Memory model stores a generic `subjectType`/`subjectId`
+  pair, not a hardcoded `patientId` column.
+- ❌ `ChatService` (Domain 1, core) imports a `Patient` type directly
+  instead of a generic `Customer`/`Subject` abstraction.
+
 ## 9. Progressive disclosure of information
 
 **Rule:** start with the conclusion, let the user ask for more. Every
@@ -170,6 +221,12 @@ unless the user explicitly asked for a report.
 recommendation with zero supporting detail available on request isn't
 trustworthy, it's just an assertion) — so this principle has no
 carve-out either, it's infrastructure for the others.
+
+**Examples:**
+- ✅ *"Profit is down this month."* first, with a tappable "see
+  breakdown" that reveals the full P&L table on request.
+- ❌ The AI's first reply is a complete financial statement pasted
+  into the chat before anyone asked for detail.
 
 ## 10. Human override for every AI action
 
@@ -189,6 +246,12 @@ Domain 10's Audit feature) and a real reversal path.
 *stricter* version of it: irreversible actions require confirmation
 *before* they happen, not just visibility after.
 
+**Examples:**
+- ✅ An automated inventory reorder appears in an activity log with a
+  visible "undo" and a notification to the manager, before it's final.
+- ❌ The AI silently reorders inventory with no record of what it did
+  or why, discoverable only by noticing the invoice later.
+
 ## How this document is used
 
 - A new Epic or Task that conflicts with a principle here needs an
@@ -201,3 +264,38 @@ Domain 10's Audit feature) and a real reversal path.
 - This document changes rarely and deliberately. `PRODUCT_ROADMAP.md`
   and `SPRINT_PLAN.md` move constantly — if you find yourself editing
   this file often, something is being decided at the wrong altitude.
+
+## Governance
+
+| Principle | Mandatory | Override Allowed | ADR Required |
+|---|---|---|---|
+| 1. AI-first interface | Yes | Yes — for the named exception categories (compliance forms, bulk data entry, configuration screens) | No — case-by-case, via Principle 9's disclosure pattern |
+| 2. Conversation before dashboard | Yes | No | N/A |
+| 3. Recommendation before reporting | Yes | Yes — when signal is genuinely insufficient (must say so explicitly, never fabricate a recommendation) | No |
+| 4. Automation before manual work | Yes | Yes — irreversible/compliance-sensitive actions never auto-execute | **Yes** — classifying any action as "safe to automate" vs. "always manual" |
+| 5. Memory-driven interactions | Yes | Yes — sensitive personal data follows its own retention/deletion rules | **Yes** — the retention/deletion policy itself |
+| 6. Explainable AI | Yes | No | N/A |
+| 7. Business-first, accounting-second | Yes (sequencing) | Yes — roadmap prioritization is inherently case-by-case | No |
+| 8. Multi-industry architecture | Yes | Only via a documented decision | **Yes** — any exception that hardcodes a vertical-specific concept into Domains 1/2/8/9/10 |
+| 9. Progressive disclosure of information | Yes | No | N/A |
+| 10. Human override for every AI action | Yes | No | N/A |
+
+**Reading the table:** "Override Allowed: No" + "ADR Required: N/A"
+means the principle has no escape hatch at all — Principles 2, 6, 9,
+and 10 are absolute. Where "ADR Required: Yes," the override itself
+doesn't exist until an ADR defining its boundary is written and
+accepted — a Task cannot invoke Principle 4, 5, or 8's exception on its
+own authority, only reference an ADR that already did.
+
+## Version
+
+**v1.0 — Frozen.** Approved as the permanent product constitution.
+
+From this point forward, this document is not edited directly. A
+change to any principle, its test, its examples, or the Governance
+table requires a new ADR (`docs/ADR/`) that explicitly proposes
+amending `PRODUCT_PRINCIPLES.md`, the same way an ADR would be required
+to override `.ai/CONSTITUTION.md` on the engineering side. Once such an
+ADR is accepted, this document is updated to match it and bumped to
+v1.1 — the version number and this section's own wording move only
+alongside an accepted ADR, never as a standalone doc edit.
