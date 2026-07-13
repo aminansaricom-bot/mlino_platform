@@ -13,10 +13,12 @@ live Sprint 1 assignment, GitHub Issue, or engineer file.
    (conversation over navigation), and the decision rule for every
    future Sprint/Task ("can this be solved by AI conversation instead
    of another page?").
-2. [`PRODUCT_PRINCIPLES.md`](PRODUCT_PRINCIPLES.md) — the permanent
-   constitution. Ten non-negotiable (mostly) rules every future
-   Sprint/Epic/Task is checked against, each with a real test and its
-   explicit limits — not slogans.
+2. [`PRODUCT_PRINCIPLES.md`](PRODUCT_PRINCIPLES.md) — **v1.0, frozen,
+   approved.** The permanent constitution. Ten non-negotiable (mostly)
+   rules every future Sprint/Epic/Task is checked against, each with a
+   real test, good/bad examples, and its explicit limits — not
+   slogans. Governed by the table at its end; changes require a new
+   ADR, never a direct edit.
 3. [`PRODUCT_ROADMAP.md`](PRODUCT_ROADMAP.md) — all 10 domains, their
    goals, and priority tiers (🟢 Now / 🟡 Next / ⚪ Later).
 4. [`FEATURE_TREE.md`](FEATURE_TREE.md) — the complete Domain → Feature
